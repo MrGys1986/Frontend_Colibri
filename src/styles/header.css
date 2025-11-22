@@ -1,0 +1,135 @@
+/* === HEADER PRINCIPAL === */
+.header {
+  height: 60px;
+  background: linear-gradient(90deg, #0b132b, #1c2541);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(91, 192, 190, 0.2);
+}
+
+/* === SEPARADOR PARA QUE NO CUBRA EL CONTENIDO === */
+.header-spacer {
+  height: 60px;
+}
+
+/* === SECCIÓN IZQUIERDA === */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* === BOTÓN DEL MENÚ === */
+.menu-btn {
+  background: none;
+  border: none;
+  color: #5bc0be;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.menu-btn:hover {
+  background: rgba(91, 192, 190, 0.15);
+}
+
+/* === LOGO + TÍTULO === */
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Imagen del colibrí */
+.logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 4px rgba(91, 192, 190, 0.6));
+}
+
+/* === TEXTO DEL TÍTULO === */
+.header-title h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #eaf6f6;
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+.header-title span {
+  color: #5bc0be;
+  text-shadow: 0 0 6px rgba(91, 192, 190, 0.5);
+}
+
+/* === SECCIÓN DERECHA (EMAIL) === */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Chip del correo del usuario */
+.user-email {
+  font-size: 0.85rem;
+  color: #cceeff;
+  background: rgba(91, 192, 190, 0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 192, 190, 0.25);
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  transition: all 0.2s ease;
+}
+
+/* === HOVER EMAIL === */
+.user-email:hover {
+  background: rgba(91, 192, 190, 0.25);
+  color: #ffffff;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+  .user-email {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 54px;
+    padding: 0 16px;
+  }
+
+  .header-spacer {
+    height: 54px;
+  }
+
+  .logo-img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .header-title h1 {
+    font-size: 0.9rem;
+  }
+
+  .user-email {
+    display: none;
+  }
+}

@@ -1,0 +1,109 @@
+.navbar {
+  background: linear-gradient(90deg, #0b132b, #1c2541);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 18px;
+  height: 58px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== Sección izquierda ==== */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botón de menú */
+.menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-icon {
+  display: inline-block;
+  line-height: 1;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* ==== Logo y nombre ==== */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 2px rgba(91, 192, 190, 0.7));
+}
+
+.navbar-logo h1 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: #e3f6f5;
+}
+
+.navbar-logo h1 span {
+  color: #5bc0be;
+  text-shadow: 0 0 6px rgba(91, 192, 190, 0.6);
+}
+
+/* ==== Sección derecha ==== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: #d4f1f4;
+}
+
+.logout-btn {
+  background: #5bc0be;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #0b132b;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #f4d03f;
+  color: #0b132b;
+}
+
+/* ==== Responsivo ==== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 6px 12px;
+  }
+
+  .navbar-logo h1 {
+    font-size: 1rem;
+  }
+
+  .user-email {
+    display: none;
+  }
+}

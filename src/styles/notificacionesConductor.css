@@ -1,0 +1,323 @@
+/* Billetera del CONDUCTOR - VERSIÓN SIMPLIFICADA */
+
+.driver-wallet {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.driver-wallet-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.driver-wallet-header h1 {
+  font-size: 2.4rem;
+  color: #5bc0be;
+  margin-bottom: 0.4rem;
+}
+
+.driver-wallet-header p {
+  color: #cccccc;
+  font-size: 1.05rem;
+}
+
+/* Balances (2 tarjetas en lugar de 3) */
+.driver-wallet-balances {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.driver-balance-card {
+  background: rgba(28, 37, 65, 0.9);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 12px;
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.driver-balance-card:hover {
+  border-color: #5bc0be;
+  transform: translateY(-2px);
+}
+
+.driver-balance-card.total {
+  border-color: #5bc0be;
+}
+
+.driver-balance-card.available {
+  border-color: #19c37d;
+}
+
+.driver-balance-icon {
+  font-size: 2.4rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(91, 192, 190, 0.1);
+  border-radius: 50%;
+}
+
+.driver-balance-card.available .driver-balance-icon {
+  background: rgba(25, 195, 125, 0.1);
+}
+
+.driver-balance-info h3 {
+  color: #cccccc;
+  font-size: 0.95rem;
+  margin-bottom: 0.45rem;
+  font-weight: 500;
+}
+
+.driver-balance-amount {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #5bc0be;
+  margin: 0;
+}
+
+.driver-balance-card.available .driver-balance-amount {
+  color: #19c37d;
+}
+
+/* Acciones */
+.driver-wallet-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.driver-btn-withdraw,
+.driver-btn-refresh {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 220px;
+}
+
+.driver-btn-withdraw {
+  background: #19c37d;
+  color: #05121f;
+}
+
+.driver-btn-withdraw:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.driver-btn-withdraw:not(:disabled):hover {
+  background: #16ac6d;
+  transform: translateY(-2px);
+}
+
+.driver-btn-refresh {
+  background: rgba(91, 192, 190, 0.1);
+  color: #5bc0be;
+  border: 1px solid #5bc0be;
+}
+
+.driver-btn-refresh:hover {
+  background: rgba(91, 192, 190, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Movimientos */
+.driver-movements-section {
+  margin-top: 2rem;
+}
+
+.driver-movements-section h3 {
+  color: #5bc0be;
+  margin-bottom: 1rem;
+}
+
+.driver-movements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.driver-movement-card {
+  background: rgba(28, 37, 65, 0.9);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.driver-movement-card:hover {
+  border-color: #5bc0be;
+}
+
+.driver-movement-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(91, 192, 190, 0.1);
+  border-radius: 8px;
+}
+
+.driver-movement-info {
+  flex: 1;
+}
+
+.driver-movement-description {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.driver-movement-date {
+  color: #999999;
+  font-size: 0.8rem;
+}
+
+.driver-movement-amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.driver-movement-amount.positive {
+  color: #4caf50;
+}
+
+.driver-movement-amount.negative {
+  color: #f44336;
+}
+
+.driver-movement-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.driver-movement-status.completado {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+/* Info extra */
+.driver-wallet-info {
+  background: rgba(91, 192, 190, 0.1);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.driver-wallet-info h4 {
+  color: #5bc0be;
+  margin-bottom: 1rem;
+}
+
+.driver-wallet-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.driver-wallet-info li {
+  padding: 0.5rem 0;
+  color: #cccccc;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.driver-wallet-info li::before {
+  content: "•";
+  color: #5bc0be;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .driver-wallet-balances {
+    grid-template-columns: 1fr;
+  }
+
+  .driver-wallet-actions {
+    flex-direction: column;
+  }
+
+  .driver-btn-withdraw,
+  .driver-btn-refresh {
+    min-width: auto;
+  }
+
+  .driver-movement-card {
+    flex-wrap: wrap;
+  }
+
+  .driver-movement-amount {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+/* Agrega esto al final de tu CSS existente */
+
+/* Responsive para modales */
+@media (max-width: 768px) {
+  .modal-personalizado-contenido,
+  .modal-retiro-contenido {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .modal-personalizado-footer {
+    flex-direction: column;
+  }
+
+  .modal-btn {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Estados de carga para botones */
+.driver-btn-withdraw:disabled,
+.driver-btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Mejoras visuales para la lista de movimientos */
+.driver-movements-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.driver-movement-card {
+  transition: all 0.2s ease;
+}
+
+.driver-movement-card:hover {
+  transform: translateX(4px);
+}
+
+}

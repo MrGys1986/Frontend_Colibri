@@ -1,0 +1,87 @@
+.pasajero-container {
+  color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 700px;
+}
+
+.pasajero-container h2 {
+  font-size: 1.4rem;
+  color: #5bc0be;
+  font-weight: 600;
+}
+
+.viaje-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.viaje-form input {
+  background: #1c2541;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.viaje-form input::placeholder {
+  color: #b0c4de;
+}
+
+.viaje-form button {
+  background: #5bc0be;
+  border: none;
+  color: #0b132b;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.viaje-form button:hover {
+  background: #f4d03f;
+  color: #0b132b;
+}
+
+/* Mapa */
+.mapa-placeholder {
+  background: #1c2541;
+  border-radius: 8px;
+  padding: 60px;
+  text-align: center;
+  color: #d4f1f4;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* Destinos frecuentes */
+.info-extra h3 {
+  color: #5bc0be;
+  margin-bottom: 8px;
+}
+
+.destinos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.destinos button {
+  background: rgba(91, 192, 190, 0.2);
+  border: 1px solid #5bc0be;
+  color: #5bc0be;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.destinos button:hover {
+  background: #5bc0be;
+  color: #0b132b;
+}

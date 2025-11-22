@@ -1,0 +1,486 @@
+/* src/styles/perfilConductor.css */
+
+.perfil-conductor {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header principal */
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(28, 37, 65, 0.9);
+  border-radius: 12px;
+  border: 1px solid rgba(91, 192, 190, 0.2);
+}
+
+.perfil-foto {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #0b132b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  overflow: hidden;
+  border: 2px solid #5bc0be;
+}
+
+.perfil-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-info-principal {
+  flex: 1;
+}
+
+.perfil-info-principal h2 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.6rem;
+}
+
+.perfil-rating {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.rating-valor {
+  color: #ffd54f;
+  font-weight: 600;
+}
+
+.viajes-completados {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.perfil-email {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Botones lado derecho del header */
+.perfil-actions-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Botones generales */
+.btn-editar,
+.btn-guardar,
+.btn-cancelar {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-editar {
+  background: rgba(91, 192, 190, 0.1);
+  color: #5bc0be;
+  border-color: #5bc0be;
+}
+
+.btn-editar:hover {
+  background: #5bc0be;
+  color: #0b132b;
+}
+
+.btn-guardar {
+  background: #5bc0be;
+  color: #0b132b;
+  border-color: #5bc0be;
+}
+
+.btn-guardar:hover {
+  background: #4da3a1;
+}
+
+.btn-cancelar {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border-color: #f44336;
+}
+
+.btn-cancelar:hover {
+  background: #f44336;
+  color: white;
+}
+
+/* Secciones */
+.perfil-seccion {
+  background: rgba(28, 37, 65, 0.9);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.perfil-seccion h3 {
+  margin: 0 0 1rem 0;
+  color: #5bc0be;
+  font-size: 1.2rem;
+}
+
+/* Grid de info */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.info-label {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.info-valor {
+  color: white;
+}
+
+/* Inputs */
+.info-item input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #3a506b;
+  background: #0b132b;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.info-item input:focus {
+  border-color: #5bc0be;
+  outline: none;
+}
+
+/* 🔴 Campos solo lectura (como pasajero) */
+.label-readonly {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.readonly-text {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* Identificación */
+.identificacion-help {
+  color: #cccccc;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.identificacion-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(91, 192, 190, 0.05);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.identificacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.identificacion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.btn-doc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identificacion-empty {
+  color: #bbbbbb;
+  font-size: 0.9rem;
+}
+
+/* Preview de la imagen */
+.identificacion-preview {
+  width: 100%;
+  max-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(91, 192, 190, 0.3);
+  background: #0b132b;
+}
+
+.identificacion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Preferencias (solo visual) */
+.preferencias-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preferencia-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem;
+  background: rgba(91, 192, 190, 0.05);
+  border-radius: 8px;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: default;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3a506b;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #5bc0be;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Acciones de cuenta */
+.acciones-cuenta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.btn-accion {
+  background: rgba(91, 192, 190, 0.1);
+  color: #5bc0be;
+  border: 1px solid #5bc0be;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-align: left;
+}
+
+.btn-accion:hover {
+  background: #5bc0be;
+  color: #0b132b;
+}
+
+/* Mensajes */
+.perfil-error {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid #f44336;
+  color: #ffcdd2;
+}
+
+.perfil-success {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid #4caf50;
+  color: #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .perfil-actions-right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .btn-editar,
+  .btn-guardar,
+  .btn-cancelar {
+    flex: 1;
+    text-align: center;
+  }
+
+  .identificacion-actions {
+    flex-direction: column;
+  }
+
+  .btn-doc {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acciones-cuenta {
+    grid-template-columns: 1fr;
+  }
+
+  /* Campos solo lectura (nombre / email) */
+.label-readonly {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.input-readonly {
+  border-color: #ff6b6b;
+  background: #15192e;
+  color: #ffb3b3;
+}
+
+/* Texto solo lectura en vista normal */
+.readonly-text {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* Identificación (mismo estilo que pasajero) */
+.identificacion-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(91, 192, 190, 0.05);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.identificacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.identificacion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.btn-doc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identificacion-preview {
+  width: 100%;
+  max-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(91, 192, 190, 0.3);
+  background: #0b132b;
+}
+
+.identificacion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Mensajes */
+.perfil-error {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid #f44336;
+  color: #ffcdd2;
+}
+
+.perfil-success {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid #4caf50;
+  color: #c8e6c9;
+}
+
+/* Responsive para botones de documento */
+@media (max-width: 768px) {
+  .identificacion-actions {
+    flex-direction: column;
+  }
+
+  .btn-doc {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+}

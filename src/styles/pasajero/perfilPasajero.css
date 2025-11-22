@@ -1,0 +1,434 @@
+/* src/styles/pasajero/perfilPasajero.css */
+.perfil-pasajero {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.perfil-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.perfil-header h1 {
+  font-size: 2.5rem;
+  color: #5bc0be;
+  margin-bottom: 0.5rem;
+}
+
+.perfil-header p {
+  color: #cccccc;
+  font-size: 1.1rem;
+}
+
+.perfil-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.perfil-section {
+  background: rgba(28, 37, 65, 0.9);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(91, 192, 190, 0.1);
+}
+
+.section-header h2 {
+  color: #5bc0be;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.btn-editar {
+  background: rgba(91, 192, 190, 0.1);
+  color: #5bc0be;
+  border: 1px solid #5bc0be;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-editar:hover {
+  background: #5bc0be;
+  color: #0b132b;
+}
+
+/* Contenedor de info centrado */
+.perfil-info {
+  display: flex;
+  justify-content: center;
+}
+
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  color: #cccccc;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border: 1px solid #3a506b;
+  border-radius: 6px;
+  background: #0b132b;
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #5bc0be;
+  outline: none;
+}
+
+/* 🔴 Campos solo lectura (nombre / email) */
+.label-readonly {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.input-readonly {
+  border-color: #ff6b6b;
+  background: #15192e;
+  color: #ffb3b3;
+}
+
+/* Botones de acciones formulario */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-guardar,
+.btn-cancelar {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-guardar {
+  background: #5bc0be;
+  color: #0b132b;
+}
+
+.btn-guardar:hover {
+  background: #4da3a1;
+}
+
+.btn-cancelar {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid #f44336;
+}
+
+.btn-cancelar:hover {
+  background: #f44336;
+  color: white;
+}
+
+/* Modo lectura */
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(91, 192, 190, 0.1);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item label {
+  color: #cccccc;
+  font-weight: 500;
+}
+
+.info-item span {
+  color: white;
+}
+
+/* 🔴 Texto de solo lectura (nombre/email) en vista normal */
+.readonly-text {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.estado-activo {
+  color: #4caf50 !important;
+  font-weight: 500;
+}
+
+/* Estadísticas */
+.estadisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.estadistica-card {
+  background: rgba(91, 192, 190, 0.1);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.estadistica-card:hover {
+  border-color: #5bc0be;
+  transform: translateY(-2px);
+}
+
+.estadistica-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.estadistica-info h3 {
+  color: #cccccc;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.estadistica-info p {
+  color: #5bc0be;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Preferencias */
+.preferencias-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preferencia-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(91, 192, 190, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.preferencia-item:hover {
+  background: rgba(91, 192, 190, 0.1);
+}
+
+/* Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3a506b;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #5bc0be;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Acciones de cuenta */
+.acciones-cuenta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.btn-accion {
+  background: rgba(91, 192, 190, 0.1);
+  color: #5bc0be;
+  border: 1px solid #5bc0be;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-align: left;
+}
+
+.btn-accion:hover {
+  background: #5bc0be;
+  color: #0b132b;
+}
+
+/* Identificación */
+.identificacion-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(91, 192, 190, 0.05);
+  border: 1px solid rgba(91, 192, 190, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Contenedor de la parte de texto/botones */
+.identificacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Contenedor solo de los botones (para manejarlos mejor en mobile) */
+.identificacion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+/* Botones específicos del documento */
+.btn-doc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Área de preview */
+.identificacion-preview {
+  width: 100%;
+  max-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(91, 192, 190, 0.3);
+  background: #0b132b;
+}
+
+.identificacion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Mensajes */
+.perfil-error {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid #f44336;
+  color: #ffcdd2;
+}
+
+.perfil-success {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid #4caf50;
+  color: #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .estadisticas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .acciones-cuenta {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  /* Botones de documento a full width en móvil */
+  .identificacion-actions {
+    flex-direction: column;
+  }
+
+  .btn-doc {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .estadisticas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .btn-editar {
+    width: 100%;
+    text-align: center;
+  }
+}

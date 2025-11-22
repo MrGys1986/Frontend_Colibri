@@ -1,0 +1,168 @@
+/* === Fondo general === */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #0b132b;
+  padding: 2.5rem 1rem 1rem;
+  flex-direction: column;
+}
+
+/* === Nuevo título fuera de la tarjeta === */
+.page-title {
+  text-align: center;
+  width: 100%;
+  color: #f4d03f;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* === Tarjeta === */
+.login-card {
+  width: 100%;
+  max-width: 330px;
+  background: #1c2541;
+  border-radius: 1rem;
+  padding: 1.3rem 1rem 1.7rem;
+  margin: 0 auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: #ffffff;
+}
+
+/* === Encabezado === */
+.login-header {
+  margin-bottom: 1.2rem;
+}
+
+/* === Logo más grande sin fondo === */
+.logo-img-new {
+  width: 95px;
+  height: 95px;
+  margin-bottom: 0.6rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(91, 192, 190, 0.45));
+}
+
+/* === Títulos === */
+.welcome-title {
+  color: #f4d03f;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.welcome-subtitle {
+  color: #c9d6e3;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+/* === Labels === */
+.input-label {
+  display: block;
+  text-align: left;
+  margin: 0.4rem auto 0.2rem auto;
+  width: 85%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f4d03f;
+}
+
+/* === Inputs === */
+.input-group {
+  position: relative;
+  margin: 0.45rem auto;
+  width: 85%;
+  display: flex;
+  align-items: center;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px 70px 8px 10px;
+  border: 1.2px solid rgba(91, 192, 190, 0.25);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: rgba(11, 19, 43, 0.85);
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #5bc0be;
+  box-shadow: 0 0 5px rgba(91, 192, 190, 0.3);
+  outline: none;
+  background: rgba(28, 37, 65, 0.9);
+}
+
+/* === Mostrar/Ocultar === */
+.show-password {
+  position: absolute;
+  right: 12px;
+  top: 4px;
+  background: none;
+  border: none;
+  color: #5bc0be;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* === Botón principal === */
+.btn-login {
+  display: block;
+  width: 85%;
+  margin: 1.1rem auto 0 auto;
+  background: linear-gradient(90deg, #3a506b, #5bc0be);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(91, 192, 190, 0.4);
+}
+
+/* === Texto registro === */
+.register-text {
+  margin-top: 1rem;
+  color: #c9d6e3;
+  font-size: 0.84rem;
+}
+
+.register-text a {
+  color: #5bc0be;
+  font-weight: 600;
+}
+
+/* === Error === */
+.msg {
+  margin-top: 1rem;
+  color: #f4d03f;
+  font-weight: 600;
+}
+
+/* === Responsivo === */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .login-card {
+    padding: 1.4rem 1rem 1.9rem;
+  }
+
+  .logo-img-new {
+    width: 85px;
+    height: 85px;
+  }
+}
