@@ -831,11 +831,36 @@
   }
 }
 
-/* src/styles/historialConductor.css - AGREGAR ESTOS ESTILOS */
-
-/* Modal de identificación */
+/* MODAL DE IDENTIFICACIÓN - ESTILOS CORREGIDOS */
 .modal-identificacion {
   max-width: 500px;
+  background: #ffffff !important; /* Fondo blanco para mejor contraste */
+  color: #333333 !important; /* Texto oscuro para mejor legibilidad */
+}
+
+.modal-identificacion .modal-header-conductor h3 {
+  color: #1f2937 !important; /* Título en color oscuro */
+}
+
+.modal-identificacion .modal-body-conductor {
+  color: #333333 !important; /* Texto del cuerpo en color oscuro */
+}
+
+.pasajero-info-modal {
+  background: #f8f9fa !important;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: #333333 !important; /* Texto en color oscuro */
+}
+
+.pasajero-info-modal div {
+  margin-bottom: 0.5rem;
+  color: #333333 !important; /* Asegurar que el texto sea visible */
+}
+
+.pasajero-info-modal strong {
+  color: #1f2937 !important; /* Etiquetas en color más oscuro */
 }
 
 .identificacion-imagen {
@@ -853,21 +878,10 @@
 .sin-identificacion {
   text-align: center;
   padding: 2rem;
-  color: #666;
+  color: #666666 !important; /* Texto en gris oscuro */
   background: #f5f5f5;
   border-radius: 8px;
   margin-top: 1rem;
-}
-
-.pasajero-info-modal {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.pasajero-info-modal div {
-  margin-bottom: 0.5rem;
 }
 
 /* Botón de ver identificación */
@@ -949,25 +963,6 @@
   background: #5a6268;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .modal-identificacion {
-    margin: 1rem;
-    max-width: calc(100vw - 2rem);
-  }
-  
-  .identificacion-imagen img {
-    max-height: 300px;
-  }
-  
-  .btn-ver-identificacion {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* src/styles/historialConductor.css - ESTILOS ACTUALIZADOS */
-
 /* Loader para acciones */
 .action-loader {
   display: flex;
@@ -975,6 +970,7 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+  color: white !important; /* Asegurar que el texto del loader sea blanco */
 }
 
 .action-loader-spinner {
@@ -1052,8 +1048,17 @@ button:disabled:hover {
   transform: none !important;
 }
 
-/* Responsive */
+/* Responsive para modal de identificación */
 @media (max-width: 768px) {
+  .modal-identificacion {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .identificacion-imagen img {
+    max-height: 300px;
+  }
+  
   .btn-ver-identificacion {
     width: 100%;
     justify-content: center;
@@ -1067,13 +1072,20 @@ button:disabled:hover {
   }
 }
 
-/* Mantener el resto de estilos existentes */
-.historial-conductor-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
+/* Estilos específicos para texto en modales - asegurar contraste */
+.modal-content-conductor * {
+  color: #333333 !important; /* Forzar color oscuro en todo el modal */
 }
 
-/* ... (el resto de los estilos se mantienen igual) */
+.modal-body-conductor p,
+.modal-body-conductor div,
+.modal-body-conductor span {
+  color: #333333 !important;
+}
+
+/* Mensaje de error en imagen */
+.identificacion-imagen p {
+  color: #666666 !important; /* Color gris oscuro para mejor legibilidad */
+}
 
 }

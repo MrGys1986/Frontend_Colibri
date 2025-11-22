@@ -6,7 +6,7 @@ import { authClient } from "../../lib/authClient";
 
 const BASE = "http://localhost:8080";
 
-// Componente ViajeCard completo con los cambios
+// Componente ViajeCard - SIN CAMBIOS
 const ViajeCard = ({ viaje, onCancelarClick, onCalificar, onVerIdentificacion }) => {
   const [mostrarCalificacion, setMostrarCalificacion] = useState(false);
 
@@ -221,19 +221,20 @@ export default function HistorialViajes() {
   const [mostrarModalExito, setMostrarModalExito] = useState(false);
   const [mensajeExito, setMensajeExito] = useState("");
 
-  // Modal identificación
+  // Modal identificación - SIN CAMBIOS
   const [mostrarModalId, setMostrarModalId] = useState(false);
   const [idModalData, setIdModalData] = useState({
     nombre: "",
     imagen: "",
   });
 
-  // 🔹 Modal confirmación de cancelación
+  // 🔹 Estados para la cancelación - CORREGIDO
   const [mostrarModalConfirm, setMostrarModalConfirm] = useState(false);
   const [viajeAEliminar, setViajeAEliminar] = useState(null);
+  const [cancelando, setCancelando] = useState(false);
 
   // ==========================
-  // AUTH HELPERS (solo para sacar user)
+  // AUTH HELPERS (sin cambios)
   // ==========================
   const getStored = () => {
     const rawUserLS = localStorage.getItem("colibri:user");
@@ -251,13 +252,11 @@ export default function HistorialViajes() {
     return { user };
   };
 
-  // Ahora este helper usa authClient para meter el Bearer y refrescar tokens
   const fetchJSONWithAuth = async (
     url,
     options = {},
     opts = { retryOn401: true }
   ) => {
-    // anti-cache
     const separator = url.includes("?") ? "&" : "?";
     const finalUrl = `${url}${separator}_=${Date.now()}`;
 
@@ -274,9 +273,8 @@ export default function HistorialViajes() {
   };
 
   // ==========================
-  // FUNCIONES PARA OBTENER DATOS DE RUTAS Y CONDUCTORES
+  // FUNCIONES PARA OBTENER DATOS (sin cambios)
   // ==========================
-
   const driverCache = useMemo(() => new Map(), []);
 
   const fetchDriverInfo = async (driverId) => {
@@ -300,38 +298,27 @@ export default function HistorialViajes() {
     try {
       console.log(`👤 Solicitando datos del conductor con driverId: ${driverId}`);
 
-      // Usuario básico
       const userRes = await fetchJSONWithAuth(
         `${BASE}/auth/user/${encodeURIComponent(driverId)}`,
         { method: "GET" }
       );
-      console.log(`👤 Respuesta de auth/user:`, userRes.status);
 
       if (userRes.ok) {
         const userData = await userRes.json().catch(() => ({}));
-        console.log("👤 Datos de usuario del conductor:", userData);
-
         name =
           userData?.full_name ||
           userData?.user?.full_name ||
           userData?.name ||
           "Conductor";
-      } else {
-        console.warn(
-          `👤 No se pudo obtener información del usuario ${driverId}, status: ${userRes.status}`
-        );
       }
 
-      // Perfil del conductor
       const drvRes = await fetchJSONWithAuth(
         `${BASE}/users/drivers/${encodeURIComponent(driverId)}`,
         { method: "GET" }
       );
-      console.log(`👤 Respuesta de users/drivers:`, drvRes.status);
 
       if (drvRes.ok) {
         const driverData = await drvRes.json().catch(() => ({}));
-        console.log("👤 Datos completos del conductor:", driverData);
 
         rating =
           driverData?.rating_avg ??
@@ -366,16 +353,6 @@ export default function HistorialViajes() {
             driverData?.name ||
             "Conductor";
         }
-
-        console.log(
-          `👤 Datos extraídos - Nombre: ${name}, Vehículo: ${vehicle}, Rating: ${rating}, Teléfono: ${phone}, idDocumentUrl: ${
-            idDocumentUrl ? "OK" : "No definido"
-          }`
-        );
-      } else {
-        console.warn(
-          `👤 No se pudo obtener información del conductor ${driverId}, status: ${drvRes.status}`
-        );
       }
     } catch (error) {
       console.error("❌ Error obteniendo perfil conductor:", error);
@@ -393,27 +370,19 @@ export default function HistorialViajes() {
     return driverInfo;
   };
 
-  // Ruta ahora también va con token
   const fetchRouteInfo = async (routeId) => {
     if (!routeId) return { origin: null, destination: null, stops: [] };
 
     try {
-      console.log(`🛣️ Solicitando datos de la ruta con routeId: ${routeId}`);
-
       const rutaRes = await fetchJSONWithAuth(
         `${BASE}/api/routes/${routeId}`,
         { method: "GET" }
       );
-      console.log(`🛣️ Respuesta de la ruta:`, rutaRes.status);
 
       if (rutaRes.ok) {
         const rutaData = await rutaRes.json().catch(() => ({}));
-        console.log("🗺️ Datos completos de la ruta:", rutaData);
         return rutaData;
       } else {
-        console.warn(
-          `🛣️ No se pudo obtener información de la ruta ${routeId}, status: ${rutaRes.status}`
-        );
         return { origin: null, destination: null, stops: [] };
       }
     } catch (error) {
@@ -422,7 +391,6 @@ export default function HistorialViajes() {
     }
   };
 
-  // Reverse geocoding
   const reverseCache = useMemo(() => new Map(), []);
 
   const obtenerNombreUbicacion = async (punto, tipo) => {
@@ -484,7 +452,7 @@ export default function HistorialViajes() {
   };
 
   // ==========================
-  // CARGAR DATOS
+  // CARGAR DATOS (sin cambios)
   // ==========================
   const cargarReservas = async () => {
     const { user } = getStored();
@@ -500,10 +468,7 @@ export default function HistorialViajes() {
       setCargando(true);
       setError(null);
 
-      console.log("🟡 Buscando reservas para passengerId:", passengerId);
-
       const reservasRes = await fetchJSONWithAuth(`${BASE}/api/reservations`);
-      console.log("🔵 Status respuesta:", reservasRes.status);
 
       if (reservasRes.status === 401) {
         setError("Tu sesión ha expirado. Vuelve a iniciar sesión.");
@@ -516,7 +481,6 @@ export default function HistorialViajes() {
       }
 
       let todasLasReservas = await reservasRes.json();
-      console.log("🟣 TODAS las reservas obtenidas:", todasLasReservas);
 
       if (!Array.isArray(todasLasReservas)) {
         if (todasLasReservas && typeof todasLasReservas === "object") {
@@ -530,15 +494,11 @@ export default function HistorialViajes() {
         if (!Array.isArray(todasLasReservas)) todasLasReservas = [];
       }
 
-      console.log(`📊 Total de reservas obtenidas: ${todasLasReservas.length}`);
-
       const reservasDelUsuario = todasLasReservas.filter((reserva) => {
         const reservaPassengerId =
           reserva.passengerId || reserva.passenger_id || reserva.passengerID;
         return reservaPassengerId === passengerId;
       });
-
-      console.log("🟢 Reservas del usuario filtradas:", reservasDelUsuario);
 
       if (reservasDelUsuario.length === 0) {
         setViajes([]);
@@ -552,30 +512,16 @@ export default function HistorialViajes() {
             const routeId = reserva.route_id || reserva.routeId;
             const driverId = reserva.driver_id || reserva.driverId;
 
-            console.log(`📝 Procesando reserva ${index + 1}:`, {
-              id: reserva._id || reserva.id,
-              routeId,
-              driverId,
-              status: reserva.status,
-              price: reserva.price,
-            });
-
             let rutaData = {};
             let conductorData = {};
 
             if (routeId) {
               rutaData = await fetchRouteInfo(routeId);
-            } else {
-              console.warn("⚠️ Reserva sin routeId");
             }
-
             if (driverId) {
               conductorData = await fetchDriverInfo(driverId);
-            } else {
-              console.warn("⚠️ Reserva sin driverId");
             }
 
-            // ubicaciones
             let origenLabel = "Origen no disponible";
             let destinoLabel = "Destino no disponible";
             let paradasLabels = [];
@@ -650,13 +596,9 @@ export default function HistorialViajes() {
               conductorData: conductorData,
             };
 
-            console.log(`✅ Viaje enriquecido ${index + 1}:`, viajeEnriquecido);
             return viajeEnriquecido;
           } catch (error) {
-            console.error(
-              `❌ Error enriqueciendo reserva ${index}:`,
-              error
-            );
+            console.error(`❌ Error enriqueciendo reserva ${index}:`, error);
             return {
               id: reserva._id || reserva.id || `temp-${index}`,
               conductor: "Error al cargar",
@@ -698,39 +640,34 @@ export default function HistorialViajes() {
   };
 
   // ==========================
-  // ACCIONES - CANCELACIÓN COMPLETA (SIN window.confirm)
+  // ACCIONES - CANCELACIÓN CORREGIDA
   // ==========================
   const cancelarViaje = async (viajeId) => {
     try {
+      setCancelando(true);
+      
       const { user } = getStored();
       const passengerId = user?.id || user?.userId || user?.uid || user?.sub;
       
       if (!passengerId) {
         alert("No se pudo identificar al usuario.");
+        setCancelando(false);
         return;
       }
 
-      // Buscar el viaje completo para obtener los datos necesarios
       const viaje = viajes.find(v => v.id === viajeId);
       if (!viaje) {
         alert("No se encontró el viaje.");
+        setCancelando(false);
         return;
       }
 
       const reservationData = viaje.reservationData;
       const routeId = reservationData.route_id || reservationData.routeId;
       const seatsToReturn = reservationData.seats || 1;
-      const amountToRelease = Math.round((viaje.precio || 0) * 100); // Convertir a centavos
+      const amountToRelease = Math.round((viaje.precio || 0) * 100);
 
-      console.log("📦 Datos para cancelación:", {
-        viajeId,
-        routeId,
-        seatsToReturn,
-        amountToRelease,
-        passengerId
-      });
-
-      // 1. BUSCAR EL HOLD_OPERATION_ID PARA ESTA RESERVACIÓN
+      // 1. BUSCAR EL HOLD_OPERATION_ID
       let holdOperationId = null;
       try {
         const ledgerRes = await fetchJSONWithAuth(
@@ -739,9 +676,6 @@ export default function HistorialViajes() {
         
         if (ledgerRes.ok) {
           const ledger = await ledgerRes.json();
-          console.log("📋 Ledger obtenido:", ledger);
-          
-          // Buscar la operación HOLD para esta reservación
           const holdEntry = ledger.find(entry => 
             entry.type === "HOLD" && 
             entry.related_reservation === viajeId &&
@@ -750,17 +684,13 @@ export default function HistorialViajes() {
           
           if (holdEntry) {
             holdOperationId = holdEntry.operation_id;
-            console.log("🎯 Hold operation ID encontrado:", holdOperationId);
           } else {
-            console.warn("⚠️ No se encontró hold en el ledger para esta reservación");
-            // Buscar por monto aproximado como fallback
             const approximateHold = ledger.find(entry => 
               entry.type === "HOLD" && 
               entry.related_reservation === viajeId
             );
             if (approximateHold) {
               holdOperationId = approximateHold.operation_id;
-              console.log("🎯 Hold operation ID encontrado (aproximado):", holdOperationId);
             }
           }
         }
@@ -768,7 +698,7 @@ export default function HistorialViajes() {
         console.error("❌ Error obteniendo ledger:", error);
       }
 
-      // 2. LIBERAR EL DINERO RETENIDO EN LA BILLETERA
+      // 2. LIBERAR EL DINERO RETENIDO
       if (holdOperationId) {
         try {
           const releaseOperationId = `release-${viajeId}-${Date.now()}`;
@@ -790,20 +720,16 @@ export default function HistorialViajes() {
           if (releaseRes.ok) {
             console.log("✅ Dinero liberado exitosamente");
           } else {
-            const errorText = await releaseRes.text();
-            console.warn("⚠️ No se pudo liberar el dinero:", errorText);
+            console.warn("⚠️ No se pudo liberar el dinero");
           }
         } catch (error) {
           console.error("❌ Error liberando dinero:", error);
         }
-      } else {
-        console.warn("⚠️ No se pudo encontrar el hold operation ID, saltando liberación de dinero");
       }
 
       // 3. DEVOLVER ASIENTOS A LA RUTA
       if (routeId) {
         try {
-          // Obtener la ruta actual primero
           const routeRes = await fetchJSONWithAuth(
             `${BASE}/api/routes/${routeId}`,
             { method: "GET" }
@@ -814,13 +740,6 @@ export default function HistorialViajes() {
             const currentSeats = Number(routeData.availableSeats) || 0;
             const newSeats = currentSeats + seatsToReturn;
 
-            console.log("🔄 Actualizando asientos:", {
-              currentSeats,
-              seatsToReturn,
-              newSeats
-            });
-
-            // Actualizar los asientos disponibles
             const updateRes = await fetchJSONWithAuth(
               `${BASE}/api/routes/${routeId}`,
               {
@@ -833,17 +752,14 @@ export default function HistorialViajes() {
 
             if (updateRes.ok) {
               console.log("✅ Asientos devueltos exitosamente");
-            } else {
-              throw new Error("Error actualizando asientos");
             }
           }
         } catch (error) {
           console.error("❌ Error devolviendo asientos:", error);
-          alert("No se pudieron devolver los asientos, pero el viaje se cancelará igualmente.");
         }
       }
 
-      // 4. QUITAR EL CÓDIGO Y CANCELAR LA RESERVACIÓN
+      // 4. CANCELAR LA RESERVACIÓN
       try {
         const cancelRes = await fetchJSONWithAuth(
           `${BASE}/api/reservations/${viajeId}`,
@@ -851,7 +767,7 @@ export default function HistorialViajes() {
             method: "PATCH",
             body: JSON.stringify({ 
               status: "CANCELLED",
-              code: null // Quitar el código para invalidar la reservación
+              code: null
             })
           }
         );
@@ -859,6 +775,8 @@ export default function HistorialViajes() {
         if (cancelRes.ok) {
           console.log("✅ Reservación cancelada y código removido");
           
+          // 🔹 CORRECCIÓN: Cerrar el modal de confirmación ANTES de mostrar el de éxito
+          setMostrarModalConfirm(false);
           setMensajeExito(
             "Viaje cancelado exitosamente. El dinero ha sido reembolsado y los asientos liberados."
           );
@@ -876,10 +794,12 @@ export default function HistorialViajes() {
     } catch (error) {
       console.error("❌ Error general cancelando viaje:", error);
       alert("No se pudo completar la cancelación. Intenta nuevamente.");
+    } finally {
+      setCancelando(false);
     }
   };
 
-  // 🔹 Flow: cuando el usuario le da al botón "Cancelar Viaje" en la card
+  // 🔹 Flow de cancelación - CORREGIDO
   const handleSolicitarCancelacion = (viajeId) => {
     setViajeAEliminar(viajeId);
     setMostrarModalConfirm(true);
@@ -906,7 +826,7 @@ export default function HistorialViajes() {
     }
   };
 
-  // Handler para abrir la modal de identificación
+  // 🔹 Handler para ver identificación - SIN CAMBIOS
   const handleVerIdentificacion = (nombreConductor, idDocumentUrl) => {
     if (!idDocumentUrl) {
       alert("El conductor no tiene identificación registrada.");
@@ -932,7 +852,7 @@ export default function HistorialViajes() {
   }, []);
 
   // ==========================
-  // FILTROS Y ESTADÍSTICAS
+  // FILTROS Y ESTADÍSTICAS (sin cambios)
   // ==========================
   const viajesFiltrados = useMemo(() => {
     if (filtro === "todos") return viajes;
@@ -1115,7 +1035,7 @@ export default function HistorialViajes() {
         </div>
       )}
 
-      {/* Modal para ver identificación del conductor */}
+      {/* Modal para ver identificación del conductor - SIN CAMBIOS */}
       {mostrarModalId && (
         <div
           className="modal-overlay-custom"
@@ -1160,11 +1080,11 @@ export default function HistorialViajes() {
         </div>
       )}
 
-      {/* 🔹 Modal de confirmación de cancelación */}
+      {/* 🔹 Modal de confirmación de cancelación CORREGIDO */}
       {mostrarModalConfirm && (
         <div
           className="modal-overlay-custom"
-          onClick={() => setMostrarModalConfirm(false)}
+          onClick={() => !cancelando && setMostrarModalConfirm(false)}
         >
           <div
             className="modal-card-custom"
@@ -1174,39 +1094,48 @@ export default function HistorialViajes() {
               <h3>Confirmar cancelación</h3>
               <button
                 className="modal-close-custom"
-                onClick={() => setMostrarModalConfirm(false)}
+                onClick={() => !cancelando && setMostrarModalConfirm(false)}
+                disabled={cancelando}
               >
                 ×
               </button>
             </div>
             <div className="modal-body-custom">
-              <p>
-                ¿Estás seguro de que quieres cancelar este viaje?
-                <br />
-                Se reembolsará el dinero retenido y se liberarán los asientos.
-              </p>
+              {cancelando ? (
+                <div className="cancelacion-cargando">
+                  <div className="loading-spinner-cancelacion"></div>
+                  <p>Cancelando viaje...</p>
+                  <p className="texto-secundario">Esto puede tomar unos segundos</p>
+                </div>
+              ) : (
+                <p>
+                  ¿Estás seguro de que quieres cancelar este viaje?
+                  <br />
+                  Se reembolsará el dinero retenido y se liberarán los asientos.
+                </p>
+              )}
             </div>
-            <div className="modal-footer-custom modal-footer-dual">
-              <button
-                className="btn-secondary-custom"
-                onClick={() => setMostrarModalConfirm(false)}
-              >
-                No, mantener viaje
-              </button>
-              <button
-                className="btn-danger-custom"
-                onClick={async () => {
-                  const id = viajeAEliminar;
-                  setMostrarModalConfirm(false);
-                  if (id) {
-                    await cancelarViaje(id);
-                    setViajeAEliminar(null);
-                  }
-                }}
-              >
-                Sí, cancelar viaje
-              </button>
-            </div>
+            {!cancelando && (
+              <div className="modal-footer-custom modal-footer-dual">
+                <button
+                  className="btn-secondary-custom"
+                  onClick={() => setMostrarModalConfirm(false)}
+                >
+                  No, mantener viaje
+                </button>
+                <button
+                  className="btn-danger-custom"
+                  onClick={async () => {
+                    const id = viajeAEliminar;
+                    if (id) {
+                      await cancelarViaje(id);
+                    }
+                  }}
+                >
+                  Sí, cancelar viaje
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

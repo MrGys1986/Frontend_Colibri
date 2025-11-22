@@ -492,9 +492,9 @@
   .historial-header p {
     font-size: 1rem;
   }
+}
 
-  /* src/styles/pasajero/historialViajes.css - AGREGAR AL FINAL */
-
+/* MODALES PERSONALIZADOS - ACTUALIZADO CON CARGADOR DE CANCELACIÓN */
 .modal-overlay-custom {
   position: fixed;
   top: 0;
@@ -564,6 +564,11 @@
 .modal-close-custom:hover {
   background: rgba(255, 255, 255, 0.1);
   color: white;
+}
+
+.modal-close-custom:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .modal-body-custom {
@@ -597,254 +602,71 @@
   transform: translateY(-1px);
 }
 
-/* src/styles/pasajero/historialViajes.css - AGREGAR AL FINAL */
-
-.modal-overlay-custom {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(4, 10, 25, 0.8);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  padding: 20px;
-}
-
-.modal-card-custom {
-  background: linear-gradient(180deg, #0E1730 0%, #0A1226 100%);
-  border: 1px solid rgba(46, 245, 150, 0.35);
-  border-radius: 16px;
-  padding: 24px;
-  max-width: 480px;
-  width: 100%;
-  color: white;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.modal-header-custom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.modal-header-custom h3 {
-  margin: 0;
-  color: #2EF596;
-  font-size: 1.25rem;
-}
-
-.modal-close-custom {
-  background: none;
-  border: none;
-  color: #94A3B8;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-}
-
-.modal-close-custom:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.modal-body-custom {
-  margin-bottom: 24px;
-}
-
-.modal-body-custom p {
-  margin: 0;
-  line-height: 1.5;
-  color: #D8E4FF;
-}
-
-.modal-footer-custom {
+/* Footer con dos botones */
+.modal-footer-dual {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
-.btn-confirmar-custom {
-  background: #19C37D;
-  color: #05121F;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-weight: 700;
+/* Botones de la modal de confirmación */
+.btn-secondary-custom {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
-.btn-confirmar-custom:hover {
-  background: #17B572;
-  transform: translateY(-1px);
+.btn-secondary-custom:hover {
+  background: #e5e7eb;
 }
 
-.btn-cancelar-custom {
-  background: #6B7280;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-weight: 700;
+.btn-danger-custom {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid #b91c1c;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
-.btn-cancelar-custom:hover {
-  background: #4B5563;
-  transform: translateY(-1px);
+.btn-danger-custom:hover {
+  background: #dc2626;
 }
 
-/* Estilos para los modales */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+/* CARGADOR DURANTE CANCELACIÓN */
+.cancelacion-cargando {
+  text-align: center;
+  padding: 20px 0;
 }
 
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 12px;
-}
-
-.modal-header h3 {
-  margin: 0;
-  color: #333;
-  font-size: 1.25rem;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #666;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.loading-spinner-cancelacion {
+  border: 3px solid rgba(46, 245, 150, 0.3);
+  border-top: 3px solid #2EF596;
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
 }
 
-.modal-close:hover {
-  background-color: #f5f5f5;
-  color: #333;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.modal-body {
-  margin-bottom: 20px;
-  color: #555;
-  line-height: 1.5;
-}
-
-.modal-body p {
-  margin: 8px 0;
-}
-
-.modal-footer {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-}
-
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.btn-primary {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #c0392b;
-}
-
-.btn-secondary {
-  background-color: #95a5a6;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #7f8c8d;
-}
-
-/* Asegurar que los botones de cancelar en las tarjetas funcionen */
-.btn-cancelar {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-
-.btn-cancelar:hover {
-  background-color: #c0392b;
+.texto-secundario {
+  color: #94A3B8 !important;
+  font-size: 0.9rem;
+  margin-top: 8px;
 }
 
 /* Loading states */
@@ -862,11 +684,6 @@
   height: 40px;
   animation: spin 1s linear infinite;
   margin: 0 auto 16px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* Estados de error y sin viajes */
@@ -926,46 +743,6 @@
 .modal-id-nombre {
   font-weight: 600;
   margin-bottom: 0.75rem;
-}
-
-/* Footer con dos botones */
-.modal-footer-dual {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-}
-
-/* Botones de la modal de confirmación */
-.btn-secondary-custom {
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
-  color: #374151;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-secondary-custom:hover {
-  background: #e5e7eb;
-}
-
-.btn-danger-custom {
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid #b91c1c;
-  background: #ef4444;
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-danger-custom:hover {
-  background: #dc2626;
-}
-
+  color: #D8E4FF;
+  text-align: center;
 }
