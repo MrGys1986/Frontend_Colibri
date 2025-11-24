@@ -550,7 +550,7 @@ export default function HomeConductor() {
     setRoutesLoading(true);
     setRoutesError("");
     try {
-      const url = `http://localhost:8080/api/routes/driver/${encodeURIComponent(uid)}`;
+      const url = `https://c-apigateway.onrender.com/api/routes/driver/${encodeURIComponent(uid)}`;
       const resp = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
@@ -888,7 +888,7 @@ export default function HomeConductor() {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/api/routes/create", {
+      const response = await fetch("https://c-apigateway.onrender.com/api/routes/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -937,14 +937,26 @@ export default function HomeConductor() {
   const canSubmit = canDetails;
 
   const openSchedulePicker = () => {
-    const el = scheduleRef.current;
-    if (!el) return;
-    if (typeof el.showPicker === "function") el.showPicker();
-    else {
+  const el = scheduleRef.current;
+  if (!el) return;
+
+  try {
+    // Navegadores modernos (Chrome, algunos WebView)
+    if (typeof el.showPicker === "function") {
+      el.showPicker();
+    } else {
+      // Fallback si no existe showPicker
       el.focus();
       el.click?.();
     }
-  };
+  } catch (err) {
+    // En varios WebView móviles lanza NotAllowedError o no soporta bien showPicker
+    console.warn("No se pudo abrir el picker nativo:", err);
+    // Fallback: al menos enfocamos para que aparezca el teclado / picker nativo
+    el.focus();
+    el.click?.();
+  }
+};
 
   return (
     <DashboardLayout>
@@ -1006,6 +1018,7 @@ export default function HomeConductor() {
                     getMarkerIcon={getMarkerIcon}
                     currentPosition={currentPosition}
                     showToastMsg={showToastMsg}
+                    scheduleRef={scheduleRef}
                   />
                 )}
 

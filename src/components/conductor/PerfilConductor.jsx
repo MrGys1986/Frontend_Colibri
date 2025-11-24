@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/perfilConductor.css";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 const MAX_IMAGE_MB = 5; // igual que pasajero
 
 export default function PerfilConductor() {

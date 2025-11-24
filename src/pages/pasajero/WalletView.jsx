@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 export default function WalletView({ userId }) {
   const token = useMemo(() => localStorage.getItem('colibri:token') || '', []);
-  const base = 'http://localhost:8080/wallet';
+  const base = 'https://c-apigateway.onrender.com/wallet';
 
   const [acc, setAcc] = useState(null);
   const [ledger, setLedger] = useState([]);

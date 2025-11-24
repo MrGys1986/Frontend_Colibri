@@ -1,6 +1,6 @@
 // src/lib/authClient.js
 export class AuthClient {
-  static BASE = 'http://localhost:8080';
+  static BASE = 'https://c-apigateway.onrender.com';
 
   // 🔹 NUEVO: método estático que SÍ existe y es el que llama el Sidebar
   static normalizeTokensStorage() {

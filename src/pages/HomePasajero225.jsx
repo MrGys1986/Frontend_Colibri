@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pasajero/homePasajero.css";
 import { authClient } from "../lib/authClient";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 const colores = [
   "#1f77b4",
   "#ff7f0e",

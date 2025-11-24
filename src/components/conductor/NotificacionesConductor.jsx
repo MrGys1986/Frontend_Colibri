@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/notificacionesConductor.css";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 
 // Componente de Cargador Personalizado
 const CargadorPersonalizado = ({ mensaje = "Procesando..." }) => {
@@ -17,37 +17,45 @@ const CargadorPersonalizado = ({ mensaje = "Procesando..." }) => {
 };
 
 // Componente de Modal Personalizado
-const ModalPersonalizado = ({ 
-  isOpen, 
-  onClose, 
-  title, 
-  message, 
-  type = "info", 
-  actions = [] 
+const ModalPersonalizado = ({
+  isOpen,
+  onClose,
+  title,
+  message,
+  type = "info",
+  actions = [],
 }) => {
   if (!isOpen) return null;
 
   const getIcono = () => {
     switch (type) {
-      case "success": return "✅";
-      case "error": return "❌";
-      case "warning": return "⚠️";
-      default: return "ℹ️";
+      case "success":
+        return "✅";
+      case "error":
+        return "❌";
+      case "warning":
+        return "⚠️";
+      default:
+        return "ℹ️";
     }
   };
 
   const getColorBorde = () => {
     switch (type) {
-      case "success": return "#19C37D";
-      case "error": return "#E33C3C";
-      case "warning": return "#F4D03F";
-      default: return "#2E96F5";
+      case "success":
+        return "#19C37D";
+      case "error":
+        return "#E33C3C";
+      case "warning":
+        return "#F4D03F";
+      default:
+        return "#2E96F5";
     }
   };
 
   return (
     <div className="modal-personalizado-overlay" onClick={onClose}>
-      <div 
+      <div
         className="modal-personalizado-contenido"
         onClick={(e) => e.stopPropagation()}
         style={{ borderColor: getColorBorde() }}
@@ -57,9 +65,11 @@ const ModalPersonalizado = ({
             <span className="modal-icono">{getIcono()}</span>
             <h3 className="modal-titulo">{title}</h3>
           </div>
-          <button className="modal-cerrar-btn" onClick={onClose}>×</button>
+          <button className="modal-cerrar-btn" onClick={onClose}>
+            ×
+          </button>
         </div>
-        
+
         <div className="modal-personalizado-body">
           <p className="modal-mensaje">{message}</p>
         </div>
@@ -105,7 +115,7 @@ export default function BilleteraConductor() {
     title: "",
     message: "",
     type: "info",
-    actions: []
+    actions: [],
   });
 
   // === Modal de Retiro de ganancias ===
@@ -126,18 +136,31 @@ export default function BilleteraConductor() {
 
     let user = {};
     try {
-      user = rawUserLS ? JSON.parse(rawUserLS) : rawUserSS ? JSON.parse(rawUserSS) : {};
+      user = rawUserLS
+        ? JSON.parse(rawUserLS)
+        : rawUserSS
+        ? JSON.parse(rawUserSS)
+        : {};
     } catch {}
 
     const candidatesAccess = [
-      rawTokLS, rawTokSS, user?.token, user?.accessToken, 
-      user?.access_token, user?.idToken, user?.auth?.accessToken, 
+      rawTokLS,
+      rawTokSS,
+      user?.token,
+      user?.accessToken,
+      user?.access_token,
+      user?.idToken,
+      user?.auth?.accessToken,
       user?.auth?.token,
     ].filter(Boolean);
 
     const candidatesRefresh = [
-      rawRefLS, rawRefSS, user?.refreshToken, user?.refresh_token, 
-      user?.rt, user?.auth?.refreshToken
+      rawRefLS,
+      rawRefSS,
+      user?.refreshToken,
+      user?.refresh_token,
+      user?.rt,
+      user?.auth?.refreshToken,
     ].filter(Boolean);
 
     const access = (candidatesAccess[0] || "").trim();
@@ -155,20 +178,23 @@ export default function BilleteraConductor() {
     return h;
   };
 
+  // 🔹 Helper fetch con auth (SIN credentials + no-store)
   const fetchJSONWithAuth = async (url, options = {}) => {
     const headers = {
       ...buildAuthHeaders(),
-      ...(options.headers || {})
+      ...(options.headers || {}),
     };
-    
-    const separator = url.includes('?') ? '&' : '?';
+
+    const separator = url.includes("?") ? "&" : "?";
     const finalUrl = `${url}${separator}_=${Date.now()}`;
-    
+
     const res = await fetch(finalUrl, {
       ...options,
       headers,
-      credentials: 'include'
+      // quitamos credentials: 'include' para evitar el problema de CORS con '*'
+      cache: "no-store",
     });
+
     return res;
   };
 
@@ -193,7 +219,7 @@ export default function BilleteraConductor() {
         title: "Sesión requerida",
         message: "Inicia sesión para ver tus ganancias.",
         type: "error",
-        actions: [{ label: "Ir a Login", onClick: () => navigate("/") }]
+        actions: [{ label: "Ir a Login", onClick: () => navigate("/") }],
       });
       return;
     }
@@ -211,7 +237,7 @@ export default function BilleteraConductor() {
           title: "Sesión expirada",
           message: "Tu sesión ha expirado. Vuelve a iniciar sesión.",
           type: "error",
-          actions: [{ label: "Ir a Login", onClick: () => navigate("/") }]
+          actions: [{ label: "Ir a Login", onClick: () => navigate("/") }],
         });
         return;
       }
@@ -220,8 +246,7 @@ export default function BilleteraConductor() {
 
       const acc = await rAcc.json();
       const total = Number(acc?.balance_cents || 0) / 100;
-      
-      // Solo establecemos las ganancias disponibles (para conductor no hay retenciones)
+
       setGananciasDisponibles(total);
 
       // ===== Movimientos (ledger del conductor) =====
@@ -237,7 +262,9 @@ export default function BilleteraConductor() {
         const monto = Number(row.amount_cents) / 100;
 
         const tipoUi =
-          row.type === "TRIP_EARNINGS" || row.type === "CAPTURE" || row.type === "TRANSFER_IN"
+          row.type === "TRIP_EARNINGS" ||
+          row.type === "CAPTURE" ||
+          row.type === "TRANSFER_IN"
             ? "ganancia"
             : row.type === "WITHDRAW"
             ? "retiro"
@@ -257,9 +284,11 @@ export default function BilleteraConductor() {
           tipo: tipoUi,
           monto,
           descripcion: desc,
-          fecha: new Date(row.created_at || row.timestamp).toLocaleString(),
+          fecha: new Date(
+            row.created_at || row.timestamp
+          ).toLocaleString(),
           estado: "completado",
-          metadata: row.metadata || {}
+          metadata: row.metadata || {},
         };
       });
 
@@ -269,7 +298,7 @@ export default function BilleteraConductor() {
       abrirModal({
         title: "No se pudieron cargar los datos",
         message: e.message || "Intenta nuevamente en unos segundos.",
-        type: "error"
+        type: "error",
       });
     } finally {
       setCargando(false);
@@ -286,7 +315,7 @@ export default function BilleteraConductor() {
       abrirModal({
         title: "Sesión inválida",
         message: "Inicia sesión para retirar tus ganancias.",
-        type: "error"
+        type: "error",
       });
       return;
     }
@@ -297,13 +326,17 @@ export default function BilleteraConductor() {
     if (!amount || amount <= 0) errores.push("Ingresa un monto válido.");
     if (amount < 50) errores.push("El retiro mínimo es de $50.00 MXN.");
     if (amount > gananciasDisponibles)
-      errores.push(`No puedes retirar más de tus ganancias disponibles ($${pesos(gananciasDisponibles)} MXN).`);
+      errores.push(
+        `No puedes retirar más de tus ganancias disponibles ($${pesos(
+          gananciasDisponibles
+        )} MXN).`
+      );
 
     if (errores.length) {
       abrirModal({
         title: "Revisa el monto del retiro",
         message: errores.join("\n"),
-        type: "error"
+        type: "error",
       });
       return;
     }
@@ -317,7 +350,7 @@ export default function BilleteraConductor() {
         operation_id: operationId,
         user_id: userId,
         amount_cents: amountCents,
-        reason: "Retiro de ganancias conductor"
+        reason: "Retiro de ganancias conductor",
       };
 
       const r = await fetchJSONWithAuth(`${BASE}/api/wallet/withdraw`, {
@@ -327,7 +360,10 @@ export default function BilleteraConductor() {
 
       if (!r.ok) {
         const errorData = await r.json().catch(() => ({}));
-        throw new Error(errorData.message || `Error ${r.status}: No se pudo procesar el retiro`);
+        throw new Error(
+          errorData.message ||
+            `Error ${r.status}: No se pudo procesar el retiro`
+        );
       }
 
       const result = await r.json();
@@ -338,8 +374,12 @@ export default function BilleteraConductor() {
 
       abrirModal({
         title: "¡Retiro exitoso!",
-        message: `Se ha procesado tu retiro por $${pesos(amount)} MXN.\n\nTu nuevo saldo disponible es: $${pesos((Number(result.new_balance) || 0) / 100)} MXN.`,
-        type: "success"
+        message: `Se ha procesado tu retiro por $${pesos(
+          amount
+        )} MXN.\n\nTu nuevo saldo disponible es: $${pesos(
+          (Number(result.new_balance) || 0) / 100
+        )} MXN.`,
+        type: "success",
       });
 
       setMontoRetiro("");
@@ -349,7 +389,7 @@ export default function BilleteraConductor() {
       abrirModal({
         title: "No se pudo completar el retiro",
         message: e.message || "Verifica tu conexión o inténtalo más tarde.",
-        type: "error"
+        type: "error",
       });
     } finally {
       setCargandoRetiro(false);
@@ -375,7 +415,9 @@ export default function BilleteraConductor() {
   return (
     <div className="driver-wallet">
       {/* Cargador personalizado para retiro */}
-      {cargandoRetiro && <CargadorPersonalizado mensaje="Procesando tu retiro..." />}
+      {cargandoRetiro && (
+        <CargadorPersonalizado mensaje="Procesando tu retiro..." />
+      )}
 
       {/* Modal personalizado del sistema */}
       <ModalPersonalizado
@@ -389,8 +431,11 @@ export default function BilleteraConductor() {
 
       {/* ===== Modal de retiro ===== */}
       {withdrawOpen && (
-        <div className="modal-personalizado-overlay" onClick={() => !cargandoRetiro && setWithdrawOpen(false)}>
-          <div 
+        <div
+          className="modal-personalizado-overlay"
+          onClick={() => !cargandoRetiro && setWithdrawOpen(false)}
+        >
+          <div
             className="modal-retiro-contenido"
             onClick={(e) => e.stopPropagation()}
           >
@@ -399,15 +444,15 @@ export default function BilleteraConductor() {
                 <span className="modal-icono">🏦</span>
                 <h3 className="modal-titulo">Retirar ganancias</h3>
               </div>
-              <button 
-                className="modal-cerrar-btn" 
+              <button
+                className="modal-cerrar-btn"
                 onClick={() => setWithdrawOpen(false)}
                 disabled={cargandoRetiro}
               >
                 ×
               </button>
             </div>
-            
+
             <div className="modal-personalizado-body">
               <div className="retiro-input-group">
                 <label>Monto a retirar ($)</label>
@@ -421,7 +466,8 @@ export default function BilleteraConductor() {
                   disabled={cargandoRetiro}
                 />
                 <div className="retiro-hint">
-                  Disponible para retirar: <strong>${pesos(gananciasDisponibles)} MXN</strong>
+                  Disponible para retirar:{" "}
+                  <strong>${pesos(gananciasDisponibles)} MXN</strong>
                   <br />
                   <em>Mínimo: $50.00 MXN</em>
                 </div>
@@ -462,15 +508,19 @@ export default function BilleteraConductor() {
       </div>
 
       {/* Cargador general */}
-      {cargando && <CargadorPersonalizado mensaje="Cargando tus ganancias..." />}
+      {cargando && (
+        <CargadorPersonalizado mensaje="Cargando tus ganancias..." />
+      )}
 
-      {/* SOLO GANANCIAS DISPONIBLES - Eliminé Ganancias Totales */}
+      {/* SOLO GANANCIAS DISPONIBLES */}
       <div className="driver-wallet-balances">
         <div className="driver-balance-card available">
           <div className="driver-balance-icon">💰</div>
           <div className="driver-balance-info">
             <h3>Ganancias Disponibles</h3>
-            <p className="driver-balance-amount">${pesos(gananciasDisponibles)}</p>
+            <p className="driver-balance-amount">
+              ${pesos(gananciasDisponibles)}
+            </p>
           </div>
         </div>
       </div>
@@ -501,10 +551,14 @@ export default function BilleteraConductor() {
         <div className="driver-movements-list">
           {movimientos.map((mov) => (
             <div key={mov.id} className="driver-movement-card">
-              <div className="driver-movement-icon">{getIconoTipo(mov.tipo)}</div>
+              <div className="driver-movement-icon">
+                {getIconoTipo(mov.tipo)}
+              </div>
 
               <div className="driver-movement-info">
-                <div className="driver-movement-description">{mov.descripcion}</div>
+                <div className="driver-movement-description">
+                  {mov.descripcion}
+                </div>
                 <div className="driver-movement-date">{mov.fecha}</div>
               </div>
 
@@ -537,12 +591,13 @@ export default function BilleteraConductor() {
         </div>
       </div>
 
-      {/* Información importante - ACTUALIZADA */}
+      {/* Información importante */}
       <div className="driver-wallet-info">
         <h4>💡 Información importante</h4>
         <ul>
           <li>
-            <strong>Todas tus ganancias están disponibles</strong> para retiro inmediato.
+            <strong>Todas tus ganancias están disponibles</strong> para retiro
+            inmediato.
           </li>
           <li>
             <strong>Retiro mínimo:</strong> $50.00 MXN por transacción.
@@ -551,17 +606,19 @@ export default function BilleteraConductor() {
             Cada retiro se procesa inmediatamente y se refleja en tu historial.
           </li>
           <li>
-            Los retiros pueden tardar de 1 a 3 días hábiles en reflejarse en tu cuenta bancaria.
+            Los retiros pueden tardar de 1 a 3 días hábiles en reflejarse en tu
+            cuenta bancaria.
           </li>
           <li>
-            Tus ganancias se actualizan automáticamente después de cada viaje completado.
+            Tus ganancias se actualizan automáticamente después de cada viaje
+            completado.
           </li>
         </ul>
       </div>
 
       {/* Estilos embebidos para componentes personalizados */}
       <style jsx>{`
-        /* Cargador personalizado */
+        /* (dejo tus estilos tal cual estaban) */
         .cargador-personalizado-overlay {
           position: fixed;
           top: 0;
@@ -577,7 +634,7 @@ export default function BilleteraConductor() {
         }
 
         .cargador-personalizado-contenido {
-          background: #0B132B;
+          background: #0b132b;
           border: 1px solid #5bc0be;
           border-radius: 12px;
           padding: 2rem;
@@ -602,11 +659,14 @@ export default function BilleteraConductor() {
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
         }
 
-        /* Modal personalizado */
         .modal-personalizado-overlay {
           position: fixed;
           top: 0;
@@ -623,7 +683,7 @@ export default function BilleteraConductor() {
         }
 
         .modal-personalizado-contenido {
-          background: linear-gradient(180deg, #0E1730 0%, #0A1226 100%);
+          background: linear-gradient(180deg, #0e1730 0%, #0a1226 100%);
           border-radius: 12px;
           padding: 1.5rem;
           max-width: 500px;
@@ -633,7 +693,7 @@ export default function BilleteraConductor() {
         }
 
         .modal-retiro-contenido {
-          background: #0B132B;
+          background: #0b132b;
           border-radius: 12px;
           padding: 1.5rem;
           max-width: 450px;
@@ -718,7 +778,7 @@ export default function BilleteraConductor() {
 
         .modal-btn.primary {
           background: #5bc0be;
-          color: #0B132B;
+          color: #0b132b;
         }
 
         .modal-btn.primary:hover:not(:disabled) {
@@ -746,7 +806,6 @@ export default function BilleteraConductor() {
           margin-right: 0.5rem;
         }
 
-        /* Grupo de input para retiro */
         .retiro-input-group {
           display: flex;
           flex-direction: column;

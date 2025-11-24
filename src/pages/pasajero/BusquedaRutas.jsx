@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/pasajero/busquedaRutas.css";
 
-const API = "http://localhost:8080";
+const API = "https://c-apigateway.onrender.com";
 
 function fmtHora(fechaIso) {
   try {

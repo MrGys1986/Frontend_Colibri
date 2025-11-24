@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import '../../styles/historialConductor.css';
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 
 // Loader para acciones
 const ActionLoader = ({ message = "Procesando..." }) => (
@@ -13,46 +13,76 @@ const ActionLoader = ({ message = "Procesando..." }) => (
 );
 
 // Modal para ver identificación del pasajero
+// Modal para ver identificación del pasajero
 const IdentificacionModal = ({ isOpen, onClose, pasajero }) => {
   if (!isOpen) return null;
 
+  const nombre = pasajero?.nombre || "Nombre no disponible";
+  const email = pasajero?.email || "No disponible";
+  const telefono = pasajero?.telefono || "No disponible";
+
+  let imgSrc = null;
+  if (pasajero?.idDocumentUrl) {
+    imgSrc = pasajero.idDocumentUrl.startsWith("data:")
+      ? pasajero.idDocumentUrl
+      : `data:image/jpeg;base64,${pasajero.idDocumentUrl}`;
+  }
+
   return (
-    <div className="modal-overlay-conductor">
-      <div className="modal-content-conductor modal-identificacion">
-        <div className="modal-header-conductor">
-          <h3>Identificación del Pasajero</h3>
-          <button className="modal-close-conductor" onClick={onClose}>×</button>
+    <div className="modal-overlay-conductor modal-id-overlay">
+      <div className="modal-content-conductor modal-id-card">
+        {/* Header */}
+        <div className="modal-id-header">
+          <span className="modal-id-title">Identificación del pasajero</span>
+          <button className="modal-close-conductor" onClick={onClose}>
+            ×
+          </button>
         </div>
-        <div className="modal-body-conductor">
-          <div className="pasajero-info-modal">
-            <div><strong>Nombre:</strong> {pasajero?.nombre || "No disponible"}</div>
-            <div><strong>Email:</strong> {pasajero?.email || "No disponible"}</div>
-            <div><strong>Teléfono:</strong> {pasajero?.telefono || "No disponible"}</div>
+
+        {/* Nombre principal centrado */}
+        <div className="modal-id-name">
+          {nombre}
+        </div>
+
+        {/* Datos rápidos del pasajero */}
+        <div className="modal-id-info-row">
+          <div className="modal-id-pill">
+            <span className="pill-label">Email</span>
+            <span className="pill-value">{email}</span>
           </div>
-          {pasajero?.idDocumentUrl ? (
-            <div className="identificacion-imagen">
-              <img 
-                src={pasajero.idDocumentUrl.startsWith('data:') 
-                  ? pasajero.idDocumentUrl 
-                  : `data:image/jpeg;base64,${pasajero.idDocumentUrl}`} 
+          <div className="modal-id-pill">
+            <span className="pill-label">Teléfono</span>
+            <span className="pill-value">{telefono}</span>
+          </div>
+        </div>
+
+        {/* Imagen de identificación */}
+        <div className="modal-id-image-wrapper">
+          {imgSrc ? (
+            <>
+              <img
+                src={imgSrc}
                 alt="Identificación del pasajero"
                 onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
+                  e.target.style.display = "none";
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = "block";
                 }}
               />
-              <p style={{display: 'none', textAlign: 'center', color: '#666'}}>
+              <p className="modal-id-image-fallback">
                 No se pudo cargar la imagen de identificación
               </p>
-            </div>
+            </>
           ) : (
-            <div className="sin-identificacion">
+            <div className="modal-id-no-image">
               <p>El pasajero no tiene identificación registrada</p>
             </div>
           )}
         </div>
-        <div className="modal-actions-conductor">
-          <button className="btn-cerrar-modal" onClick={onClose}>
+
+        {/* Footer con botón Cerrar */}
+        <div className="modal-id-footer">
+          <button className="btn-id-cerrar" onClick={onClose}>
             Cerrar
           </button>
         </div>
@@ -397,21 +427,25 @@ export default function HistorialConductor() {
   };
 
   const fetchJSONWithAuth = async (url, options = {}) => {
-    const headers = {
-      ...buildAuthHeaders(),
-      ...(options.headers || {})
-    };
-    
-    const separator = url.includes('?') ? '&' : '?';
-    const finalUrl = `${url}${separator}_=${Date.now()}`;
-    
-    const res = await fetch(finalUrl, {
-      ...options,
-      headers,
-      credentials: 'include'
-    });
-    return res;
+  const headers = {
+    ...buildAuthHeaders(),
+    ...(options.headers || {}),
   };
+
+  const separator = url.includes("?") ? "&" : "?";
+  const finalUrl = `${url}${separator}_=${Date.now()}`;
+
+  const res = await fetch(finalUrl, {
+    ...options,
+    headers,
+    cache: "no-store",   // opcional pero recomendado
+    // ❌ QUITAR credentials: 'include'
+    // credentials: 'include',
+  });
+
+  return res;
+};
+
 
   // ==========================
   // FUNCIONES PARA OBTENER DATOS DEL PASAJERO (INCLUYENDO IDENTIFICACIÓN)

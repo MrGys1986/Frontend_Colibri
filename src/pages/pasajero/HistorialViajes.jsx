@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/pasajero/historialViajes.css";
 import { authClient } from "../../lib/authClient";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 
 // Componente ViajeCard - SIN CAMBIOS
 const ViajeCard = ({ viaje, onCancelarClick, onCalificar, onVerIdentificacion }) => {

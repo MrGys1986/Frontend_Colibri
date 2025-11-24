@@ -11,7 +11,7 @@ import marker from "leaflet/dist/images/marker-icon.png";
 import shadow from "leaflet/dist/images/marker-shadow.png";
 import { authClient } from "../../lib/authClient";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 
 L.Icon.Default.mergeOptions({ iconRetinaUrl: marker2x, iconUrl: marker, shadowUrl: shadow });
 

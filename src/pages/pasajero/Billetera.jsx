@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/pasajero/billetera.css";
 import { authClient, AuthClient } from "../../lib/authClient";
 
-const BASE = AuthClient.BASE || "http://localhost:8080";
+const BASE = AuthClient.BASE || "https://c-apigateway.onrender.com";
 
 export default function Billetera() {
   const navigate = useNavigate();

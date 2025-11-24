@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/pasajero/perfilPasajero.css";
 
-const BASE = "http://localhost:8080";
+const BASE = "https://c-apigateway.onrender.com";
 
 // 🔹 Límite de imagen en MB (seguro para tu caso)
 const MAX_IMAGE_MB = 5;

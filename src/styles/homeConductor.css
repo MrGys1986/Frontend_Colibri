@@ -1,4 +1,4 @@
-/* =========================
+/* ========================= 
    Base / Layout general
    ========================= */
 .home-conductor {
@@ -8,8 +8,16 @@
   padding: 1rem;
 }
 
-.rutas-header h2 { margin: 0 0 .25rem 0; font-size: 1.6rem; color: #fff; }
-.rutas-sub { margin: 0 0 1rem 0; color: #9bbfc0; opacity: .85; }
+.rutas-header h2 {
+  margin: 0 0 .25rem 0;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.rutas-sub {
+  margin: 0 0 1rem 0;
+  color: #9bbfc0;
+  opacity: .85;
+}
 
 /* =========================
    Tarjetas / Lista de rutas
@@ -22,10 +30,9 @@
   color: #fff;
 }
 
-.rutas-container { margin-top: 0.5rem; }
-
-
-
+.rutas-container {
+  margin-top: 0.5rem;
+}
 
 .ruta-card.error {
   background: rgba(255,0,0,0.09);
@@ -33,7 +40,9 @@
   color: #ffd6cc;
 }
 
-.ruta-card.ruta-empty { text-align: center; }
+.ruta-card.ruta-empty {
+  text-align: center;
+}
 
 .ruta-header {
   display: flex;
@@ -42,8 +51,16 @@
   margin-bottom: 1rem;
 }
 
-.ruta-header h4 { margin: 0; font-size: 1.1rem; color: #fff; }
-.ruta-horario { color: #999; font-size: 0.9rem; margin: 0.25rem 0 0 0; }
+.ruta-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.ruta-horario {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0 0;
+}
 
 .status-badge {
   padding: .25rem .5rem;
@@ -51,10 +68,23 @@
   font-weight: 600;
   font-size: .85rem;
 }
-.status-badge.activa { background: rgba(46, 213, 115, .15); border: 1px solid rgba(46,213,115,.35); color: #5BC0BE; }
-.status-badge.inactiva { background: rgba(255, 193, 7,.15); border: 1px solid rgba(255,193,7,.35); color: #999; }
+.status-badge.activa {
+  background: rgba(46, 213, 115, .15);
+  border: 1px solid rgba(46,213,115,.35);
+  color: #5BC0BE;
+}
+.status-badge.inactiva {
+  background: rgba(255, 193, 7,.15);
+  border: 1px solid rgba(255,193,7,.35);
+  color: #999;
+}
 
-.ruta-info { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.ruta-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
 .info-badge {
   background: rgba(91, 192, 190, 0.1);
   color: #5BC0BE;
@@ -63,20 +93,31 @@
   font-size: 0.9rem;
 }
 
-.ruta-actions { margin-top: .5rem; }
+.ruta-actions {
+  margin-top: .5rem;
+}
 
 /* =========================
    Botones
    ========================= */
-.btn-primary, .btn-secondary, .btn-outline-primary, .btn-outline-danger {
+.btn-primary,
+.btn-secondary,
+.btn-outline-primary,
+.btn-outline-danger {
   border-radius: 10px;
   padding: .6rem .9rem;
   border: 1px solid transparent;
   font-weight: 600;
 }
 
-.btn-primary { background: #2E96F5; color: #fff; width: 100%; }
-.btn-primary:hover:not(:disabled) { filter: brightness(1.05); }
+.btn-primary {
+  background: #2E96F5;
+  color: #fff;
+  width: 100%;
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
 .btn-primary.disabled,
 .btn-primary:disabled {
   background: rgba(255,255,255,.25) !important;
@@ -84,24 +125,51 @@
   cursor: not-allowed !important;
 }
 
-.btn-secondary { background: #0E2A57; color: #fff; }
-.btn-outline-primary { background: transparent; color: #8ecbff; border-color: #2E96F5; }
-.btn-outline-danger { background: transparent; color: #ff9aa0; border-color: #ff6b72; }
+.btn-secondary {
+  background: #0E2A57;
+  color: #fff;
+}
+.btn-outline-primary {
+  background: transparent;
+  color: #8ecbff;
+  border-color: #2E96F5;
+}
+.btn-outline-danger {
+  background: transparent;
+  color: #ff9aa0;
+  border-color: #ff6b72;
+}
 
-.w-50 { width:50% } .w-100 { width:100% } .btn-lg { padding:.9rem 1.1rem; font-size:1.05rem; }
+.w-50 { width:50% }
+.w-100 { width:100% }
+.btn-lg {
+  padding:.9rem 1.1rem;
+  font-size:1.05rem;
+}
 
 /* =========================
    FAB Crear Ruta
    ========================= */
 .fab-create-route {
-  position: fixed; right: 16px; bottom: 18px;
-  width: 54px; height: 54px; border-radius: 50%;
-  background: #2E96F5; color: #fff; border: none; font-size: 26px; line-height: 54px;
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #2E96F5;
+  color: #fff;
+  border: none;
+  font-size: 26px;
+  line-height: 54px;
   box-shadow: 0 10px 22px rgba(0,0,0,.35);
-  z-index: 50; cursor: pointer;
+  z-index: 50;
+  cursor: pointer;
   transition: transform .15s ease;
 }
-.fab-create-route:hover { transform: translateY(-1px); }
+.fab-create-route:hover {
+  transform: translateY(-1px);
+}
 
 /* =========================
    Formulario crear ruta
@@ -115,7 +183,12 @@
 }
 
 .form-group { margin-bottom: 1rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; color: #5BC0BE; font-weight: bold; }
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #5BC0BE;
+  font-weight: bold;
+}
 .form-group input,
 .form-group select {
   width: 100%;
@@ -126,20 +199,45 @@
   color: #fff;
   margin-bottom: 0.5rem;
 }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: #5BC0BE; }
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #5BC0BE;
+}
 
 /* Stepper */
-.step-head { display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem; }
+.step-head {
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  margin-bottom:.5rem;
+}
 .step-dot {
-  width: 28px; height: 28px; border-radius: 50%;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.25);
   font-weight: 700;
 }
-.step-dot.done { background: rgba(46,213,115,.22); border-color: rgba(46,213,115,.55); }
-.step-dot.active { background: rgba(46,150,245,.22); border-color: rgba(46,150,245,.55); }
-.step-actions { display:flex; gap:.5rem; }
-.step-cta { margin-top:.5rem; }
+.step-dot.done {
+  background: rgba(46,213,115,.22);
+  border-color: rgba(46,213,115,.55);
+}
+.step-dot.active {
+  background: rgba(46,150,245,.22);
+  border-color: rgba(46,150,245,.55);
+}
+.step-actions {
+  display:flex;
+  gap:.5rem;
+}
+.step-cta {
+  margin-top:.5rem;
+}
 
 .disabled-card { opacity: .5; pointer-events: none; }
 
@@ -147,19 +245,47 @@
 .dt-wrapper { position: relative; }
 .dt-input { max-width: 90%; }
 .dt-icon-btn {
-  position: absolute; right: 10px; top: 61%; transform: translateY(-50%);
+  position: absolute;
+  right: 10px;
+  top: 61%;
+  transform: translateY(-50%);
   border: 1px solid rgba(91, 192, 190, 0.35);
   background: rgba(91, 192, 190, 0.12);
-  color: #d7f1f2; padding: .25rem .5rem; border-radius: 6px; cursor: pointer;
+  color: #d7f1f2;
+  padding: .25rem .5rem;
+  border-radius: 6px;
+  cursor: pointer;
 }
-.dt-icon-btn:hover { background: rgba(91, 192, 190, 0.25); }
-.dt-icon-btn:disabled { opacity: .5; cursor: not-allowed; }
+.dt-icon-btn:hover {
+  background: rgba(91, 192, 190, 0.25);
+}
+.dt-icon-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
 
 /* Paradas + precios (paso 3) */
-.stops-list { list-style: none; padding: 0; margin: 0; }
-.stop-row { display:flex; gap:.5rem; align-items:center; margin-bottom:.5rem; }
-.stops-prices-merged { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
-.price-label { font-size: 12px; color: #9aa5b1; }
+.stops-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.stop-row {
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  margin-bottom:.5rem;
+}
+.stops-prices-merged {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.price-label {
+  font-size: 12px;
+  color: #9aa5b1;
+}
 
 .input-stop-name,
 .input-stop-price {
@@ -172,23 +298,34 @@
 }
 .input-stop-price { text-align: right; }
 .input-stop-price::-webkit-outer-spin-button,
-.input-stop-price::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.input-stop-price::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input-stop-price { -moz-appearance: textfield; }
 
-.suggested-pill { background: #0b7285; color: #eaf6f9; padding: 8px 12px; border-radius: 8px; }
+.suggested-pill {
+  background: #0b7285;
+  color: #eaf6f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
 .actions-right { display: flex; gap: 10px; }
 
 /* Controles de asientos */
-.seats-row { display: grid; grid-template-columns: 42px 1fr 42px; gap: .5rem; align-items: center; max-width: 280px; }
+.seats-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  gap: .5rem;
+  align-items: center;
+  max-width: 280px;
+}
 .seats-btn { padding: .45rem 0; }
 .seats-input { text-align: center; }
 
 /* Sticky footer resumen */
-/* ===== Footer de creación: NO sticky en móvil, sticky en desktop ===== */
-
-/* Móvil por defecto: footer como bloque normal al final del formulario */
 .create-sticky-footer {
-  position: static;            /* no sticky */
+  position: static;
   bottom: auto;
   z-index: 1;
   margin-top: 1rem;
@@ -196,10 +333,9 @@
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,.08);
   background: rgba(11, 19, 43, .85);
-  box-shadow: none;            /* sin sombra para no tapar campos */
+  box-shadow: none;
 }
 
-/* Contenido: columnas apiladas en móvil */
 .create-sticky-footer .csf-right,
 .create-sticky-footer .csf-route {
   width: 100%;
@@ -213,7 +349,6 @@
   margin-top: .5rem;
 }
 
-/* Botón CTA full width en móvil */
 @media (max-width: 600px) {
   .create-sticky-footer .btn-primary {
     width: 100%;
@@ -221,7 +356,6 @@
   }
 }
 
-/* Desktop: vuelve a ser sticky al fondo del panel */
 @media (min-width: 992px) {
   .create-sticky-footer {
     position: sticky;
@@ -237,11 +371,30 @@
   }
 }
 
-.csf-route { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
-.csf-chip { padding: .2rem .5rem; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); font-size: .85rem; }
-.csf-stop { color: #ffd857; border-color: rgba(255,216,87,.35); background: rgba(255,216,87,.12); }
+.csf-route {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.csf-chip {
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  font-size: .85rem;
+}
+.csf-stop {
+  color: #ffd857;
+  border-color: rgba(255,216,87,.35);
+  background: rgba(255,216,87,.12);
+}
 .csf-sep { opacity: .7 }
-.csf-right { display: flex; align-items: center; gap: .75rem; }
+.csf-right {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
 .csf-total { color: #cfeff0; }
 
 /* =========================
@@ -253,12 +406,16 @@
   grid-auto-rows: max-content;
   gap: 1rem;
 }
-.grid-col-left, .grid-col-right, .grid-map { width: 100%; }
+.grid-col-left,
+.grid-col-right,
+.grid-map { width: 100%; }
 .grid-map .map-container { height: 420px !important; }
 
 @media (min-width: 992px) {
   .create-ruta-form form {
-    display: grid; grid-template-columns: 1.1fr .9fr; gap: 1rem;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 1rem;
   }
   .preview-map { grid-column: 1 / 2; order: 1; }
   .form-steps  { grid-column: 2 / 3; order: 2; }
@@ -293,76 +450,221 @@
 }
 
 /* Marcadores custom */
-.marker-dot { position: relative; width: 28px; height: 36px; }
+.marker-dot {
+  position: relative;
+  width: 28px;
+  height: 36px;
+}
 .marker-dot .marker-pin {
-  position: absolute; top: 50%; left: 50%; width: 26px; height: 26px;
-  transform: translate(-50%, -50%); border-radius: 50%;
-  border: 2px solid #000; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45);
 }
 .marker-dot .marker-abbr {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  font-weight: 800; font-size: 13px; line-height: 1; color: #ffffff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6); pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
 }
 .marker-origin .marker-pin { background: #2ecc71; }
 .marker-dest .marker-pin { background: #e74c3c; }
-.marker-stop .marker-pin { background: #f1c40f; border: 3px solid #000; box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.5); }
-.marker-stop .marker-abbr { color: #1a1a1a; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7); }
+.marker-stop .marker-pin {
+  background: #f1c40f;
+  border: 3px solid #000;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.5);
+}
+.marker-stop .marker-abbr {
+  color: #1a1a1a;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
 
 /* =========================
    Buscador (Search bar)
    ========================= */
-.search-container { position: relative; background: rgba(255,255,255,0.06); border-radius: 12px; border:1px solid rgba(255,255,255,.08); }
-.search-input-wrapper { position: relative; display: flex; align-items: center; gap: .5rem; }
-.search-input { background: rgba(0,0,0,0.2); color:#fff; border:1px solid rgba(255,255,255,0.14); padding-left: 2.2rem !important; }
-.search-icon { position: absolute; left: .75rem; pointer-events: none; opacity: .8; }
-.clear-btn { position: absolute; right: 2.5rem; background: transparent; border: 0; font-size: 1.2rem; color: #9bbfc0; cursor: pointer; padding: 0 .25rem; }
+.search-container {
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.search-input {
+  background: rgba(0,0,0,0.2);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.14);
+  padding-left: 2.2rem !important;
+}
+.search-icon {
+  position: absolute;
+  left: .75rem;
+  pointer-events: none;
+  opacity: .8;
+}
+.clear-btn {
+  position: absolute;
+  right: 2.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 1.2rem;
+  color: #9bbfc0;
+  cursor: pointer;
+  padding: 0 .25rem;
+}
 .clear-btn:hover { color: #fff; }
-.phase-chip { margin-left: auto; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.15); padding: .2rem .5rem; border-radius: 999px; font-size: .8rem; white-space: nowrap; }
+.phase-chip {
+  margin-left: auto;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  white-space: nowrap;
+}
 .search-spinner {
-  position: absolute; right: .75rem; width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,.25); border-top-color: #5BC0BE;
-  border-radius: 50%; animation: spin 0.7s linear infinite;
+  position: absolute;
+  right: .75rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.25);
+  border-top-color: #5BC0BE;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .results-dropdown {
-  position: absolute; left: 0; right: 0; top: calc(100% + .4rem); z-index: 1200;
-  background: rgba(28, 37, 65, 0.98); border: 1px solid rgba(91, 192, 190, 0.25);
-  border-radius: 10px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.35);
-  max-height: 360px; overflow-y: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + .4rem);
+  z-index: 1200;
+  background: rgba(28, 37, 65, 0.98);
+  border: 1px solid rgba(91, 192, 190, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  max-height: 360px;
+  overflow-y: auto;
 }
-.result-item { width: 100%; text-align: left; padding: .6rem .9rem; background: transparent; border: 0; color: #eaf4f5; transition: background .15s ease; cursor: pointer; }
-.result-item:hover, .result-item.active { background: rgba(46,150,245,.15); }
+.result-item {
+  width: 100%;
+  text-align: left;
+  padding: .6rem .9rem;
+  background: transparent;
+  border: 0;
+  color: #eaf4f5;
+  transition: background .15s ease;
+  cursor: pointer;
+}
+.result-item:hover,
+.result-item.active {
+  background: rgba(46,150,245,.15);
+}
 .result-main { font-weight:600; }
-.result-sub { font-size:.85rem; opacity:.85; }
+.result-sub {
+  font-size:.85rem;
+  opacity:.85;
+}
 
 /* =========================
    Modal (map picker)
    ========================= */
 .modal-overlay {
-  position: fixed; inset: 0; z-index: 999;
-  background: rgba(0,0,0,0.55); backdrop-filter: blur(2px);
-  display:flex; align-items:flex-end; justify-content:center;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
 }
 .modal-card {
-  background: #0B132B; color:#fff; border-radius: 12px 12px 0 0;
-  width: 680px; max-width: calc(100% - 16px);
+  background: #0B132B;
+  color:#fff;
+  border-radius: 12px 12px 0 0;
+  width: 680px;
+  max-width: calc(100% - 16px);
   border: 1px solid rgba(255,255,255,.08);
 }
-.modal-mobile-full { width: 100%; max-width: 100%; border-radius: 16px 16px 0 0; }
-.modal-header { display:flex; align-items:center; justify-content:space-between; padding: .9rem 1rem; border-bottom:1px solid rgba(255,255,255,.07); }
-.modal-close { background: transparent; color: #fff; font-size: 26px; border: none; line-height: 1; }
-.modal-body-scroll { max-height: 70vh; overflow:auto; padding: .8rem 1rem; }
-.modal-map-wrapper { border-radius: 12px; overflow:hidden; border:1px solid rgba(255,255,255,.08); margin-top:.5rem; }
-.modal-selected { display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; }
-.pill { padding: .25rem .5rem; border-radius: 999px; border:1px solid rgba(255,255,255,.2); font-weight:600; font-size:.85rem; }
-.pill.ok { background: rgba(46,213,115,.18); border-color: rgba(46,213,115,.45); }
-.pill.warn { background: rgba(255,193,7,.18); border-color: rgba(255,193,7,.45); }
+.modal-mobile-full {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 16px 16px 0 0;
+}
+.modal-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: .9rem 1rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.modal-close {
+  background: transparent;
+  color: #fff;
+  font-size: 26px;
+  border: none;
+  line-height: 1;
+}
+.modal-body-scroll {
+  max-height: 70vh;
+  overflow:auto;
+  padding: .8rem 1rem;
+}
+.modal-map-wrapper {
+  border-radius: 12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  margin-top:.5rem;
+}
+.modal-selected {
+  display:flex;
+  gap:.6rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.pill {
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.2);
+  font-weight:600;
+  font-size:.85rem;
+}
+.pill.ok {
+  background: rgba(46,213,115,.18);
+  border-color: rgba(46,213,115,.45);
+}
+.pill.warn {
+  background: rgba(255,193,7,.18);
+  border-color: rgba(255,193,7,.45);
+}
 .sel-label { flex:1; opacity:.9; }
 .fixed-bottom-actions {
-  display:flex; gap:.5rem; padding: .7rem; border-top: 1px solid rgba(255,255,255,.07);
-  background: #0B132B; position: sticky; bottom: 0; border-radius: 0 0 12px 12px;
+  display:flex;
+  gap:.5rem;
+  padding: .7rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+  background: #0B132B;
+  position: sticky;
+  bottom: 0;
+  border-radius: 0 0 12px 12px;
 }
 
 @media (min-width: 992px) {
@@ -374,9 +676,15 @@
    Toasts y alerts
    ========================= */
 .toast-message {
-  position: fixed; left: 50%; transform: translateX(-50%);
-  bottom: 82px; z-index: 1000;
-  background: rgba(0,0,0,.8); color:#fff; padding:.6rem .9rem; border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 82px;
+  z-index: 1000;
+  background: rgba(0,0,0,.8);
+  color:#fff;
+  padding:.6rem .9rem;
+  border-radius: 10px;
   border: 1px solid rgba(255,255,255,.15);
 }
 
@@ -395,29 +703,75 @@
   from { opacity: 0; transform: translateX(400px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-.alert-content { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.alert-message { font-weight: 600; flex: 1; }
-.alert-close { background: transparent; border: none; color: inherit; font-size: 20px; cursor: pointer; padding: 0; line-height: 1; }
+.alert-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.alert-message {
+  font-weight: 600;
+  flex: 1;
+}
+.alert-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
 .alert-close:hover { opacity: 0.7; }
-.custom-alert-info { background: rgba(46, 150, 245, 0.2); border: 1px solid rgba(46, 150, 245, 0.5); color: #8ecbff; }
-.custom-alert-success { background: rgba(46, 213, 115, 0.2); border: 1px solid rgba(46, 213, 115, 0.5); color: #5fef9c; }
-.custom-alert-error { background: rgba(255, 107, 114, 0.2); border: 1px solid rgba(255, 107, 114, 0.5); color: #ff9aa0; }
-.custom-alert-warning { background: rgba(255, 193, 7, 0.2); border: 1px solid rgba(255, 193, 7, 0.5); color: #ffd857; }
+.custom-alert-info {
+  background: rgba(46, 150, 245, 0.2);
+  border: 1px solid rgba(46, 150, 245, 0.5);
+  color: #8ecbff;
+}
+.custom-alert-success {
+  background: rgba(46, 213, 115, 0.2);
+  border: 1px solid rgba(46, 213, 115, 0.5);
+  color: #5fef9c;
+}
+.custom-alert-error {
+  background: rgba(255, 107, 114, 0.2);
+  border: 1px solid rgba(255, 107, 114, 0.5);
+  color: #ff9aa0;
+}
+.custom-alert-warning {
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  color: #ffd857;
+}
 
 @media (max-width: 480px) {
-  .custom-alert { top: 10px; right: 10px; left: 10px; max-width: none; }
+  .custom-alert {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
 }
 
 /* =========================
    Utilidades / Estados
    ========================= */
-.hint { margin-top: .5rem; color: #9bbfc0; }
-.input-error { border-color: #ff6b72 !important; box-shadow: 0 0 0 2px rgba(255, 107, 114, .2); }
+.hint {
+  margin-top: .5rem;
+  color: #9bbfc0;
+}
+.input-error {
+  border-color: #ff6b72 !important;
+  box-shadow: 0 0 0 2px rgba(255, 107, 114, .2);
+}
 .inline-error {
-  margin: .35rem 0; padding: .4rem .6rem;
+  margin: .35rem 0;
+  padding: .4rem .6rem;
   background: rgba(255, 107, 114, .12);
   border: 1px solid rgba(255, 107, 114, .45);
-  color: #ff9aa0; border-radius: 8px; font-size: .9rem;
+  color: #ff9aa0;
+  border-radius: 8px;
+  font-size: .9rem;
 }
 
 /* =========================
@@ -431,18 +785,31 @@
   .ruta-info { gap: .5rem; }
 }
 @media screen and (max-width: 576px) {
-  .stop-row { display: grid; grid-template-columns: 1fr; }
+  .stop-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 @media screen and (max-width: 480px) {
   .home-conductor { padding: 0.75rem; }
   .ruta-card { padding: 1rem; }
-  .ruta-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .ruta-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
   .status-badge { align-self: flex-start; }
-  .btn-primary { padding: 0.875rem; font-size: 1rem; }
+  .btn-primary {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
 }
 @media screen and (max-width: 420px) {
   .trip-label { gap: 8px; font-size: 0.95rem; }
-  .trip-label input[type="checkbox"] { width: 16px; height: 16px; }
+  .trip-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
 }
 @media screen and (max-width: 360px) {
   .home-conductor { padding: 0.5rem; }
@@ -453,36 +820,83 @@
 /* =========================
    Trip type (checkboxes)
    ========================= */
-.trip-type { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
-.trip-label { display: inline-flex; flex-direction: row-reverse; align-items: center; gap: 10px; cursor: pointer; font-weight: 700; color: #5BC0BE; }
-.trip-label input[type="checkbox"] { width: 18px; height: 18px; margin: 0; padding: 0; accent-color: #5BC0BE; vertical-align: middle; }
+.trip-type {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.trip-label {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #5BC0BE;
+}
+.trip-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: #5BC0BE;
+  vertical-align: middle;
+}
 
 /* =========================
    Stepper compacto superior
    ========================= */
-.create-header { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .75rem; }
-.step-chip {
-  display: inline-flex; gap: .5rem; align-items: center; padding: .35rem .6rem;
-  border-radius: 999px; font-weight: 700;
-  border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: #dfefff;
+.create-header {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: .75rem;
 }
-.step-chip.lock { opacity: .5; filter: grayscale(35%); }
-.step-chip.done { border-color: rgba(46,213,115,.45); background: rgba(46,213,115,.16); }
+.step-chip {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: #dfefff;
+}
+.step-chip.lock {
+  opacity: .5;
+  filter: grayscale(35%);
+}
+.step-chip.done {
+  border-color: rgba(46,213,115,.45);
+  background: rgba(46,213,115,.16);
+}
 .step-chip > span {
-  width: 20px; height: 20px; display: inline-grid; place-items: center;
-  border-radius: 50%; background: rgba(0,0,0,.25); font-size: .85rem; font-weight: 800;
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,.25);
+  font-size: .85rem;
+  font-weight: 800;
 }
 
 /* Acciones rápidas precios */
 .price-quick { background: rgba(255,255,255,0.04) !important; }
-.price-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
-.price-actions .btn { padding: .45rem .6rem; }
+.price-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.price-actions .btn {
+  padding: .45rem .6rem;
+}
 
 /* =========================
    Mobile-first polish
    ========================= */
-
-/* 1) Tipografía y espacios más legibles en móvil */
 :root {
   --space-1: .5rem;
   --space-2: .75rem;
@@ -491,22 +905,23 @@
   --tap-min: 44px;
 }
 
-/* 2) Contenedores: respiro lateral en móviles muy pequeños */
 @media (max-width: 420px) {
   .home-conductor { padding: var(--space-2); }
-  .card, .create-ruta-form { border-radius: var(--radius); padding: var(--space-3); }
+  .card,
+  .create-ruta-form {
+    border-radius: var(--radius);
+    padding: var(--space-3);
+  }
 }
 
-/* 3) Botones: blancos, altos y de toque cómodo */
 .btn-primary,
 .btn-secondary,
 .btn-outline-primary,
 .btn-outline-danger {
   min-height: var(--tap-min);
-  width: 100%;         /* full width en móvil */
+  width: 100%;
 }
 
-/* 4) Inputs más tocables */
 .form-group input,
 .form-group select,
 .input-stop-name,
@@ -516,23 +931,19 @@
   border-radius: 10px;
 }
 
-/* 5) Grid pasos (1&2 izq | 3&4 der) y mapa abajo en desktop,
-      apilado en móvil (ya lo tienes), pero con gaps más generosos */
 .form-grid-2col { gap: var(--space-3); }
 @media (min-width: 992px) {
   .form-grid-2col { gap: 1.25rem; }
 }
 
-/* 6) Mapa: altura adaptable y scroll amigable */
 .map-container {
-  height: 56vh;                /* base en móvil */
-  max-height: 520px;           /* evita crecer demasiado */
+  height: 56vh;
+  max-height: 520px;
 }
 @media (min-width: 992px) {
   .map-container { height: 420px; }
 }
 
-/* 7) Safe-area (iPhone con notch) en sticky footer y toasts */
 .create-sticky-footer {
   padding-bottom: calc(.6rem + env(safe-area-inset-bottom));
 }
@@ -540,198 +951,71 @@
   bottom: calc(82px + env(safe-area-inset-bottom));
 }
 
-/* 8) Modal scroll suave y con “momentum” en iOS */
 .modal-body-scroll {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
 
-/* 9) Search dropdown: ocupa todo el ancho en móvil y separa mejor */
 @media (max-width: 480px) {
-  .results-dropdown { left: -1px; right: -1px; border-radius: 12px; }
+  .results-dropdown {
+    left: -1px;
+    right: -1px;
+    border-radius: 12px;
+  }
   .result-item { padding: .75rem 1rem; }
 }
 
-/* 10) Step chips y badges: compactos y legibles en móvil */
 @media (max-width: 480px) {
-  .step-chip { padding: .3rem .5rem; font-size: .9rem; }
-  .status-badge { font-size: .8rem; padding: .2rem .6rem; }
+  .step-chip {
+    padding: .3rem .5rem;
+    font-size: .9rem;
+  }
+  .status-badge {
+    font-size: .8rem;
+    padding: .2rem .6rem;
+  }
 }
 
-/* 11) Lista de paradas + precios: apila bien en pantallas chicas */
 @media (max-width: 576px) {
   .stops-prices-merged .stop-row {
-    grid-template-columns: 1fr; /* label arriba, acciones/price abajo */
+    grid-template-columns: 1fr;
   }
   .actions-right { justify-content: flex-start; }
 }
 
-/* 12) Evita “derrapes” del mapa al hacer scroll (mejor gesto) */
-.leaflet-container, .leaflet-container * {
+.leaflet-container,
+.leaflet-container * {
   touch-action: pan-x pan-y;
 }
 
-/* 13) Reduce animaciones si el usuario lo pide */
 @media (prefers-reduced-motion: reduce) {
   .fab-create-route,
   .toast-message,
-  .modal-overlay { transition: none !important; animation: none !important; }
+  .modal-overlay {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
-/* 14) Mini mejoras visuales en xs */
 @media (max-width: 360px) {
-  .route-info, .csf-right { gap: .5rem; }
+  .route-info,
+  .csf-right { gap: .5rem; }
   .dt-input { max-width: 100%; }
 }
-
 
 /* ====== GRID DE RUTAS (para columnas adaptables) ====== */
 .rutas-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 1fr; /* default móvil: 1 columna */
+  grid-template-columns: 1fr;
 }
 
-/* tablets medianas: 2 columnas */
 @media (min-width: 600px) {
   .rutas-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* desktop: 3 columnas */
-@media (min-width: 992px) {
-  .rutas-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-
-
-.ruta-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-}
-
-/* ajustamos los badges */
-.ruta-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-
-.info-badge {
-  background: rgba(91, 192, 190, 0.15);
-  color: #5BC0BE;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-/* centramos el botón */
-.ruta-actions {
-  margin-top: 1rem;
-}
-
-
-
-/* ===== Modal estilo compacto con scroll interno ===== */
-.modal-backdrop{position:fixed;inset:0;background:#0006;display:grid;place-items:center;padding:16px;z-index:9999}
-.modal-card{width:min(880px,100%);background:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.modal-compact{max-height:86vh}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #e5e7eb}
-.modal-header h3{margin:0;color:#111827}
-.modal-close{border:none;background:transparent;font-size:1.5rem;line-height:1;cursor:pointer;color:#111827}
-.modal-body{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;padding:12px}
-.modal-body.scrollable{overflow:auto}
-@media (max-width:900px){.modal-body{grid-template-columns:1fr}}
-.modal-info{display:flex;flex-direction:column;gap:8px}
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.info-row .label{color:#6b7280}.info-row .value{font-weight:700;color:#111827}
-.separator{height:1px;background:#e5e7eb;margin:6px 0}
-.modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:10px 14px;border-top:1px solid #e5e7eb}
-
-/* ===== Mini mapa en detalles ===== */
-.leaflet-mini{height:240px;border-radius:10px;overflow:hidden}
-
-/* ===== Marcadores personalizados ===== */
-.cm .cm-dot{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
-.cm-pin .pin{position:relative;transform:translateY(-4px)}
-.cm-pin .pin-head{width:22px;height:22px;border-radius:6px;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.25)}
-.cm-pin .pin-tip{position:absolute;left:10px;top:20px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:8px solid #333}
-
-/* ===== Popups ===== */
-.popup .popup-title{font-weight:800;margin-bottom:6px;color:#111827}
-.popup .popup-body{font-size:.9rem;color:#4b5563;margin-bottom:8px}
-/* Oculta el ícono nativo del input datetime-local en navegadores Webkit (Chrome, Edge, Safari) */
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  display: none;
-}
-
-/* Opcional: para Firefox */
-input[type="datetime-local"]::-moz-calendar-picker-indicator {
-  display: none;
-}
-
-/* Opcional: para Edge */
-input[type="datetime-local"]::-ms-clear {
-  display: none;
-}
-@media (max-width: 480px) {
-  .results-dropdown { left: -1px; right: -1px; border-radius: 12px; }
-  .result-item { padding: .75rem 1rem; }
-}
-
-/* 10) Step chips y badges: compactos y legibles en móvil */
-@media (max-width: 480px) {
-  .step-chip { padding: .3rem .5rem; font-size: .9rem; }
-  .status-badge { font-size: .8rem; padding: .2rem .6rem; }
-}
-
-/* 11) Lista de paradas + precios: apila bien en pantallas chicas */
-@media (max-width: 576px) {
-  .stops-prices-merged .stop-row {
-    grid-template-columns: 1fr; /* label arriba, acciones/price abajo */
-  }
-  .actions-right { justify-content: flex-start; }
-}
-
-/* 12) Evita “derrapes” del mapa al hacer scroll (mejor gesto) */
-.leaflet-container, .leaflet-container * {
-  touch-action: pan-x pan-y;
-}
-
-/* 13) Reduce animaciones si el usuario lo pide */
-@media (prefers-reduced-motion: reduce) {
-  .fab-create-route,
-  .toast-message,
-  .modal-overlay { transition: none !important; animation: none !important; }
-}
-
-/* 14) Mini mejoras visuales en xs */
-@media (max-width: 360px) {
-  .route-info, .csf-right { gap: .5rem; }
-  .dt-input { max-width: 100%; }
-}
-
-
-/* ====== GRID DE RUTAS (para columnas adaptables) ====== */
-.rutas-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr; /* default móvil: 1 columna */
-}
-
-/* tablets medianas: 2 columnas */
-@media (min-width: 600px) {
-  .rutas-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* desktop: 3 columnas */
 @media (min-width: 992px) {
   .rutas-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -756,7 +1040,6 @@ input[type="datetime-local"]::-ms-clear {
   box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
-/* ajustamos los badges */
 .ruta-info {
   display: flex;
   flex-wrap: wrap;
@@ -774,87 +1057,192 @@ input[type="datetime-local"]::-ms-clear {
   font-weight: 600;
 }
 
-/* centramos el botón */
 .ruta-actions {
   margin-top: 1rem;
 }
 
-
-
 /* ===== Modal estilo compacto con scroll interno ===== */
-.modal-backdrop{position:fixed;inset:0;background:#0006;display:grid;place-items:center;padding:16px;z-index:9999}
-.modal-card{width:min(880px,100%);background:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.modal-compact{max-height:86vh}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #e5e7eb}
-.modal-header h3{margin:0;color:#111827}
-.modal-close{border:none;background:transparent;font-size:1.5rem;line-height:1;cursor:pointer;color:#111827}
-.modal-body{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;padding:12px}
-.modal-body.scrollable{overflow:auto}
-@media (max-width:900px){.modal-body{grid-template-columns:1fr}}
-.modal-info{display:flex;flex-direction:column;gap:8px}
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.info-row .label{color:#6b7280}.info-row .value{font-weight:700;color:#111827}
-.separator{height:1px;background:#e5e7eb;margin:6px 0}
-.modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:10px 14px;border-top:1px solid #e5e7eb}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #0006;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 9999;
+}
+.modal-card.modal-compact {
+  width: min(880px, 100%);
+  max-height: 86vh;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.modal-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 14px;
+  border-bottom:1px solid #e5e7eb;
+}
+.modal-header h3 {
+  margin:0;
+  color:#111827;
+}
+.modal-close {
+  border:none;
+  background:transparent;
+  font-size:1.5rem;
+  line-height:1;
+  cursor:pointer;
+  color:#111827;
+}
+.modal-body {
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:12px;
+  padding:12px;
+}
+.modal-body.scrollable {
+  overflow:auto;
+}
+@media (max-width:900px) {
+  .modal-body {
+    grid-template-columns:1fr;
+  }
+}
+.modal-info {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.info-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+.info-row .label { color:#6b7280; }
+.info-row .value {
+  font-weight:700;
+  color:#111827;
+}
+.separator {
+  height:1px;
+  background:#e5e7eb;
+  margin:6px 0;
+}
+.modal-footer {
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  padding:10px 14px;
+  border-top:1px solid #e5e7eb;
+}
 
 /* ===== Mini mapa en detalles ===== */
-.leaflet-mini{height:240px;border-radius:10px;overflow:hidden}
+.leaflet-mini {
+  height:240px;
+  border-radius:10px;
+  overflow:hidden;
+}
 
 /* ===== Marcadores personalizados ===== */
-.cm .cm-dot{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
-.cm-pin .pin{position:relative;transform:translateY(-4px)}
-.cm-pin .pin-head{width:22px;height:22px;border-radius:6px;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.25)}
-.cm-pin .pin-tip{position:absolute;left:10px;top:20px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:8px solid #333}
+.cm .cm-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.cm-pin .pin {
+  position: relative;
+  transform: translateY(-4px);
+}
+
+.cm-pin .pin-head {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+.cm-pin .pin-tip {
+  position:absolute;
+  left:10px;
+  top:20px;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:8px solid #333;
+}
 
 /* ===== Popups ===== */
-.popup .popup-title{font-weight:800;margin-bottom:6px;color:#111827}
-.popup .popup-body{font-size:.9rem;color:#4b5563;margin-bottom:8px}
+.popup .popup-title {
+  font-weight:800;
+  margin-bottom:6px;
+  color:#111827;
+}
+.popup .popup-body {
+  font-size:.9rem;
+  color:#4b5563;
+  margin-bottom:8px;
+}
 
 /* ===== Tarjetas claras con texto negro ===== */
-
-/* Card de detalles de ruta en modo claro */
 .ruta-card--light {
   background: #ffffff !important;
   color: #000000 !important;
   border: 1px solid #e5e7eb;
 }
-
-/* Aseguramos que los textos internos también sean negros */
 .ruta-card--light h4,
 .ruta-card--light p,
 .ruta-card--light span,
 .ruta-card--light .ruta-horario {
   color: #000000 !important;
 }
-
-/* Si usas badges dentro de esa card, ajusta si hace falta */
 .ruta-card--light .status-badge {
   background: #e5f3ff;
   border-color: #bfdbfe;
   color: #1f2933;
 }
-
-
-/* ===== Texto de INICIO / DESTINO / PARADAS dentro de la ruta-card en negro ===== */
-
-/* Si tienes contenedores de paradas */
 .ruta-card .ruta-paradas,
 .ruta-card .parada-item {
   color: #000000 !important;
 }
-
-/* Si Inicio / Destino salen como chips o texto de ruta en el footer/resumen */
 .ruta-card .csf-route,
 .ruta-card .csf-route span,
 .ruta-card .csf-chip,
 .ruta-card .csf-stop {
   color: #000000 !important;
 }
-
-/* Por si el título y horario seguían en blanco */
 .ruta-card .ruta-header h4,
 .ruta-card .ruta-horario {
   color: #000000 !important;
 }
 
+/* ===== Calendario nativo: NO lo ocultamos ===== */
+/* Mostramos el ícono nativo del input datetime-local para que funcione bien en móvil/Capacitor */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: inline-block;
+  cursor: pointer;
+}
 
+/* Firefox */
+input[type="datetime-local"]::-moz-calendar-picker-indicator {
+  opacity: 1;
+}
+
+/* Edge legacy: solo ocultamos el clear */
+input[type="datetime-local"]::-ms-clear {
+  display: none;
+}
