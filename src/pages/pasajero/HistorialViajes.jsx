@@ -7,7 +7,8 @@ import { authClient } from "../../lib/authClient";
 const BASE = "https://c-apigateway.onrender.com";
 
 // Componente ViajeCard - SIN CAMBIOS
-const ViajeCard = ({ viaje, onCancelarClick, onCalificar, onVerIdentificacion }) => {
+const ViajeCard = ({ viaje, onCancelarClick, onCalificar, onVerIdentificacion, onCompartirViaje }) => {
+
   const [mostrarCalificacion, setMostrarCalificacion] = useState(false);
 
   const getEstadoInfo = (estado) => {
@@ -189,6 +190,19 @@ const ViajeCard = ({ viaje, onCancelarClick, onCalificar, onVerIdentificacion })
             Cancelar Viaje
           </button>
         )}
+
+         {/* ✅ NUEVO: Compartir viaje (solo pendiente) */}
+  {viaje.estado === "pendiente" && (
+    <button
+      className="btn-compartir"
+      onClick={(e) => {
+        e.stopPropagation();
+        onCompartirViaje(viaje);
+      }}
+    >
+      📲 Compartir viaje
+    </button>
+  )}
 
         {/* Botón: Ver identificación del conductor (solo en curso y si hay doc) */}
         {viaje.estado === "pendiente" &&
@@ -826,6 +840,65 @@ export default function HistorialViajes() {
     }
   };
 
+  const compartirViajeWhatsApp = (viaje) => {
+  const nombre = viaje?.conductor || "Conductor";
+
+  // ===== Teléfono limpio y presentable =====
+  const telRaw = viaje?.phoneConductor;
+  const telDigits =
+    telRaw && telRaw !== "No disponible"
+      ? String(telRaw).replace(/\D/g, "")
+      : "";
+
+  // Formato sugerido (MX):
+  // - si son 10 dígitos => +52XXXXXXXXXX
+  // - si ya viene con 52 (12 dígitos) => +52XXXXXXXXXX
+  // - si no cuadra => lo mostramos tal cual en dígitos
+  let telPretty = "No disponible";
+  if (telDigits) {
+    if (telDigits.length === 10) telPretty = `+52 ${telDigits}`;
+    else if (telDigits.length === 12 && telDigits.startsWith("52"))
+      telPretty = `+${telDigits.slice(0, 2)} ${telDigits.slice(2)}`;
+    else if (telDigits.length === 13 && telDigits.startsWith("521"))
+      telPretty = `+52 ${telDigits.slice(3)}`; // por si viene tipo 521...
+    else telPretty = telDigits;
+  }
+
+  // ===== Fecha/hora =====
+  const fechaHora = `${viaje?.fecha || "Fecha no disponible"}${
+    viaje?.hora ? ` a las ${viaje.hora}` : ""
+  }`;
+
+  // ===== Ruta =====
+  const origen = viaje?.origen || "Origen no disponible";
+  const destino = viaje?.destino || "Destino no disponible";
+
+  const paradas = Array.isArray(viaje?.paradas)
+    ? viaje.paradas.filter(Boolean)
+    : [];
+
+  const codigoViaje =
+    viaje?.codigoViaje && viaje.codigoViaje !== "N/A" ? viaje.codigoViaje : "";
+
+  // ===== Mensaje (sin emojis, con negritas y separadores) =====
+  const mensaje =
+    `*Colibrí | Detalles del viaje*\n` +
+    `──────────────────────────────\n` +
+    `*Conductor:* ${nombre}\n` +
+    `*Tel. Conductor:* ${telPretty}\n` +
+    `*Fecha y hora:* ${fechaHora}\n` +
+    `*Salida:* ${origen}\n` +
+    `*Llegada:* ${destino}` +
+    (paradas.length ? `\n*Paradas:* ${paradas.join(" • ")}` : "") +
+    (codigoViaje ? `\n*Código:* ${codigoViaje}` : "") +
+    `\n──────────────────────────────\n` +
+    `Te comparto los datos de mi viaje.`;
+
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+  window.open(waUrl, "_blank", "noopener,noreferrer");
+};
+
+
   // 🔹 Handler para ver identificación - SIN CAMBIOS
   const handleVerIdentificacion = (nombreConductor, idDocumentUrl) => {
     if (!idDocumentUrl) {
@@ -989,13 +1062,15 @@ export default function HistorialViajes() {
             </div>
           ) : (
             viajesFiltrados.map((viaje) => (
-              <ViajeCard
-                key={viaje.id}
-                viaje={viaje}
-                onCancelarClick={handleSolicitarCancelacion}
-                onCalificar={calificarViaje}
-                onVerIdentificacion={handleVerIdentificacion}
-              />
+             <ViajeCard
+  key={viaje.id}
+  viaje={viaje}
+  onCancelarClick={handleSolicitarCancelacion}
+  onCalificar={calificarViaje}
+  onVerIdentificacion={handleVerIdentificacion}
+  onCompartirViaje={compartirViajeWhatsApp}
+/>
+
             ))
           )}
         </div>

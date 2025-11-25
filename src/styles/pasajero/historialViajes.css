@@ -746,3 +746,19 @@
   color: #D8E4FF;
   text-align: center;
 }
+
+.btn-compartir {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #16a34a;
+  background: #ecfdf5;
+  color: #15803d;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-compartir:hover {
+  background: #dcfce7;
+}

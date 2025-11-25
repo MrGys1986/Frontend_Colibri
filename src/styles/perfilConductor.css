@@ -484,3 +484,121 @@ input:checked + .slider:before {
 }
 
 }
+
+
+/* ======================
+   BOTÓN DE PÁNICO (mismo estilo pasajero)
+====================== */
+.alerta-peligro{
+  border: 1px solid rgba(244, 67, 54, 0.35) !important;
+  background: rgba(28, 37, 65, 0.92);
+}
+
+.alerta-peligro h2{
+  color: #ff6b6b;
+  margin: 0 0 0.5rem 0;
+}
+
+.alerta-texto{
+  color: #cccccc;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.btn-panico{
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 67, 54, 0.65);
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn-panico:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btn-panico:active{
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+/* ======================
+   MODAL PÁNICO
+====================== */
+.panic-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 10, 25, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.panic-modal{
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #0E1730 0%, #0A1226 100%);
+  border: 1px solid rgba(244, 67, 54, 0.45);
+  border-radius: 16px;
+  padding: 22px;
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.panic-modal h3{
+  margin: 0 0 10px 0;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+}
+
+.panic-modal p{
+  margin: 0 0 18px 0;
+  color: #D8E4FF;
+  line-height: 1.5;
+}
+
+.panic-actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.panic-confirm{
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 67, 54, 0.7);
+  background: #ef4444;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.panic-confirm:hover{
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.panic-cancel{
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.panic-cancel:hover{
+  background: rgba(255,255,255,0.12);
+}

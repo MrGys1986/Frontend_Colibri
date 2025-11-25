@@ -41,6 +41,7 @@ export default function PerfilConductor() {
   const [success, setSuccess] = useState("");
   const [editando, setEditando] = useState(false);
   const [notFound, setNotFound] = useState(false);
+  const [showPanicModal, setShowPanicModal] = useState(false);
 
   const [userData, setUserData] = useState({
     full_name: storedUser.full_name || storedUser.name || "",
@@ -775,6 +776,67 @@ export default function PerfilConductor() {
             </div>
           </div>
         </div>
+
+        {/* ======================
+    BOTÓN DE PÁNICO
+====================== */}
+<div className="perfil-section alerta-peligro">
+  <h2>🆘 Botón de Pánico</h2>
+  <p className="alerta-texto">
+    Si estás en peligro, pulsa este botón para contactar emergencias.
+  </p>
+
+  <button
+    className="btn-panico"
+    onClick={() => setShowPanicModal(true)}
+  >
+    🚨 Llamar a Emergencias
+  </button>
+</div>
+
+{showPanicModal && (
+  <div
+    className="panic-overlay"
+    onClick={() => setShowPanicModal(false)}
+  >
+    <div
+      className="panic-modal"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <h3>Confirmar emergencia</h3>
+      <p>Se abrirá la llamada al <b>911</b>.</p>
+
+      <div className="panic-actions">
+        <button
+          className="panic-confirm"
+          onClick={() => {
+            setShowPanicModal(false);
+
+            // 🔥 Acción actual (WEB)
+            window.location.href = "tel:911";
+
+            // 🔥 FUTURO: Acción para Capacitor (cuando sea app)
+            /*
+            Capacitor.Plugins.CallNumber.call({
+              number: "911",
+              bypassAppChooser: true
+            });
+            */
+          }}
+        >
+          Sí, llamar ahora
+        </button>
+
+        <button
+          className="panic-cancel"
+          onClick={() => setShowPanicModal(false)}
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
         {/* Acciones de cuenta */}
         <div className="perfil-section">
