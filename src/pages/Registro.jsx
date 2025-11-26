@@ -17,9 +17,40 @@ export default function Registro() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // === VALIDACIONES DE FRONT ===
+  const validarCorreo = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const reglasPassword = {
+    longitud: (p) => p.length >= 8,
+    mayuscula: (p) => /[A-Z]/.test(p),
+    minuscula: (p) => /[a-z]/.test(p),
+    numero: (p) => /\d/.test(p),
+    especial: (p) => /[^A-Za-z0-9]/.test(p),
+  };
+
   const handleRegistro = async (e) => {
     e.preventDefault();
     setMessage("");
+
+    if (!validarCorreo(email)) {
+      setMessage("El correo no es válido.");
+      return;
+    }
+
+    const cumplePassword =
+      reglasPassword.longitud(password) &&
+      reglasPassword.mayuscula(password) &&
+      reglasPassword.minuscula(password) &&
+      reglasPassword.numero(password) &&
+      reglasPassword.especial(password);
+
+    if (!cumplePassword) {
+      setMessage("La contraseña no cumple todos los requisitos.");
+      return;
+    }
 
     if (password !== confirmar) {
       setMessage("Las contraseñas no coinciden.");
@@ -50,7 +81,7 @@ export default function Registro() {
         setMessage(data.message || "Error al registrar el usuario.");
       }
     } catch (error) {
-      console.error("Error al registrar:", error);
+      console.error("Error:", error);
       setMessage("Error al conectar con el servidor.");
     } finally {
       setLoading(false);
@@ -59,23 +90,21 @@ export default function Registro() {
 
   return (
     <div className="registro-container">
-
-      {/* === Título fuera de la tarjeta === */}
+      {/* === Título === */}
       <h1 className="page-title">Crear cuenta</h1>
 
       <div className="registro-card">
         <div className="registro-header">
-          {/* Logo nuevo sin círculo */}
           <img src="/colibri.png" alt="Logo Colibri" className="logo-img-new" />
 
           <h2 className="registro-title">Registro de {rolSeleccionado}</h2>
           <p className="registro-subtitle">
-            Solo toma un minuto.  
-            ¡Vamos a volar alto juntos 🚀!
+            Solo toma un minuto. ¡Vamos a volar alto juntos 🚀!
           </p>
         </div>
 
         <form onSubmit={handleRegistro} className="registro-form">
+          
           <label className="input-label">Nombre completo</label>
           <div className="input-group">
             <input
@@ -99,13 +128,15 @@ export default function Registro() {
           </div>
 
           <label className="input-label">Fecha de nacimiento</label>
-          <div className="input-group">
+          <div className="input-group date-input">
             <input
               type="date"
               value={dateBirth}
               onChange={(e) => setDateBirth(e.target.value)}
+              onFocus={(e) => e.target.showPicker && e.target.showPicker()}
               required
             />
+            <span className="calendar-icon">📅</span>
           </div>
 
           <label className="input-label">Contraseña</label>
@@ -124,6 +155,25 @@ export default function Registro() {
             >
               {showPassword ? "Ocultar" : "Ver"}
             </button>
+          </div>
+
+          {/* === Reglas visuales === */}
+          <div className="password-rules">
+            <p className={reglasPassword.longitud(password) ? "ok" : "bad"}>
+              {reglasPassword.longitud(password) ? "✔" : "✖"} Mínimo 8 caracteres
+            </p>
+            <p className={reglasPassword.mayuscula(password) ? "ok" : "bad"}>
+              {reglasPassword.mayuscula(password) ? "✔" : "✖"} Una mayúscula
+            </p>
+            <p className={reglasPassword.minuscula(password) ? "ok" : "bad"}>
+              {reglasPassword.minuscula(password) ? "✔" : "✖"} Una minúscula
+            </p>
+            <p className={reglasPassword.numero(password) ? "ok" : "bad"}>
+              {reglasPassword.numero(password) ? "✔" : "✖"} Un número
+            </p>
+            <p className={reglasPassword.especial(password) ? "ok" : "bad"}>
+              {reglasPassword.especial(password) ? "✔" : "✖"} Un símbolo especial
+            </p>
           </div>
 
           <label className="input-label">Confirmar contraseña</label>
@@ -156,7 +206,6 @@ export default function Registro() {
         {message && <p className="msg">{message}</p>}
       </div>
 
-      {/* === Legal fuera de la tarjeta === */}
       <div className="legal-section">
         <p className="legal-text">
           Al registrarte, aceptas nuestros{" "}
